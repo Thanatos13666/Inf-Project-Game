@@ -47,7 +47,7 @@ alignment = 1
 [node name="New_Game" parent="Menue/centerrow/Buttons" instance=ExtResource( 3 )]
 margin_right = 518.0
 margin_bottom = 120.0
-scene_to_load = "res://Main_menu_group/sub_scenen/New_Game.tscn"
+scene_to_load = "res://assetz/mappack/tileemap_test.tscn"
 
 [node name="Continue" parent="Menue/centerrow/Buttons" instance=ExtResource( 4 )]
 margin_top = 140.0

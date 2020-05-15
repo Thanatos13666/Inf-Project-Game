@@ -1,0 +1,27 @@
+Veränderungen im bransch Sander
+
+#Projekt Einstellungen:
+habe und den inputs für wasd und pfeile dia auf cam_move zeigen
+heißen 
+cam_up
+cam_down
+cam_right
+cam_dowm
+
+#Neue Ordner
+-Inf-Project-Game\assetz\mappack
+-Inf-Project-Game\assetz\mappack\maps
+
+#Neue Dateien (außer scenen)
+-mappack/main_tile_set.png
+-mappack/main_tile_set.tres
+automatische .import dateinen nicht gelistet
+
+#Neue Scenen mit kurtzer Beschreibung:
+-beispiel_map 
+
+#neue skripte
+-keine
+
+#Veränderung an anderen Scenen:
+-keine

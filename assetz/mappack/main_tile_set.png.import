@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mapPack_spritesheet.png-ae2fbe97741b3d982b0ba06d1966b8e4.stex"
+path="res://.import/main_tile_set.png-e01d00f6b096765bb63e6c04619034cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assetz/mappack/mapPack_spritesheet.png"
-dest_files=[ "res://.import/mapPack_spritesheet.png-ae2fbe97741b3d982b0ba06d1966b8e4.stex" ]
+source_file="res://assetz/mappack/main_tile_set.png"
+dest_files=[ "res://.import/main_tile_set.png-e01d00f6b096765bb63e6c04619034cf.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
