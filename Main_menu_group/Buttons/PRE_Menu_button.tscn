@@ -3,7 +3,6 @@
 [ext_resource path="res://Main_menu_group/Buttons/Menu_button.gd" type="Script" id=1]
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_48_preset.tres" type="DynamicFont" id=2]
 
-
 [node name="Menu_button" type="Button"]
 margin_right = 1040.0
 margin_bottom = 20.0

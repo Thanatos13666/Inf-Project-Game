@@ -74,7 +74,6 @@ margin_top = 168.0
 margin_right = 291.0
 margin_bottom = 232.0
 texture = ExtResource( 2 )
-stretch_mode = 2
 
 [node name="Label" type="Label" parent="Menue"]
 margin_top = 528.0

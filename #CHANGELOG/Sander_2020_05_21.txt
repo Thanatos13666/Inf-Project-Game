@@ -1,0 +1,39 @@
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   Main_menu_group/Buttons/Butt_Continue.tscn
+        modified:   Main_menu_group/Buttons/PRE_Menu_button.tscn
+        modified:   Main_menu_group/Main_menu.tscn
+        modified:   Main_menu_group/sub_scenen/Options.tscn
+        modified:   Main_menu_group/sub_scenen/Pre_tmp_screnv2.tscn
+        deleted:    assetz/mappack/beispiel_map.tscn
+        deleted:    assetz/mappack/main_tile_set.png
+        deleted:    assetz/mappack/main_tile_set.png.import
+        deleted:    assetz/mappack/main_tile_set.tres
+        deleted:    assetz/mappack/mapPack_spritesheet.xml
+        deleted:    assetz/mappack/mapPack_tilesheet_edited.csv.import
+        modified:   project.godot
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .import/Money.png-6f3c88d4e02baab98002ee9a750a6dc0.md5
+        .import/Money.png-6f3c88d4e02baab98002ee9a750a6dc0.stex
+        .import/Stonks.png-72b9130f85a5f38783bf4a000d476054.md5
+        .import/Stonks.png-72b9130f85a5f38783bf4a000d476054.stex
+        .import/Test_1.png-3812a584b8f934e3e33eb414a15073f3.md5
+        .import/Test_1.png-3812a584b8f934e3e33eb414a15073f3.stex
+        .import/Test_2.png-a066e462226c81726f3fbba07e634b45.md5
+        .import/Test_2.png-a066e462226c81726f3fbba07e634b45.stex
+        .import/Test_3.png-ddeca420ae81ef899602dac507acde9c.md5
+        .import/Test_3.png-ddeca420ae81ef899602dac507acde9c.stex
+        .import/backgroung.png-76d4b7a26438d48008efe8635fa29f8e.md5
+        .import/backgroung.png-76d4b7a26438d48008efe8635fa29f8e.stex
+        .import/main_tile_set.png-1d11cc58626bd5c8d21e4e871e7ac711.md5
+        .import/main_tile_set.png-1d11cc58626bd5c8d21e4e871e7ac711.stex
+        .import/main_tile_set.png-7f9b83b1669529d2a4ae5d593565f849.md5
+        .import/main_tile_set.png-7f9b83b1669529d2a4ae5d593565f849.stex
+        .import/main_tile_set.png-e01d00f6b096765bb63e6c04619034cf.md5
+        .import/main_tile_set.png-e01d00f6b096765bb63e6c04619034cf.stex
+        assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_8_preset.tres
+        assetz/topbar/
+        game/

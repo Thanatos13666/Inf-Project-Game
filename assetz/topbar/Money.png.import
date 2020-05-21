@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/main_tile_set.png-e01d00f6b096765bb63e6c04619034cf.stex"
+path="res://.import/Money.png-6f3c88d4e02baab98002ee9a750a6dc0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assetz/mappack/main_tile_set.png"
-dest_files=[ "res://.import/main_tile_set.png-e01d00f6b096765bb63e6c04619034cf.stex" ]
+source_file="res://assetz/topbar/Money.png"
+dest_files=[ "res://.import/Money.png-6f3c88d4e02baab98002ee9a750a6dc0.stex" ]
 
 [params]
 
