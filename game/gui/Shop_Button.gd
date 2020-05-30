@@ -1,10 +1,10 @@
 extends Button
-var show= false
 
+
+
+func _ready():
+	_on_Button_toggled(true)
 func _on_Button_toggled(button_pressed):
+	#es gibt garantiert ne beserelösung als dieses hier
+	get_parent().get_parent().get_parent().get_node("shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con").visible = pressed
 	
-	show = !show
-	if (show):
-		get_parent().get_node("u_r/ScrollContainer").visible= true
-	else : 
-		get_parent().get_node("u_r/ScrollContainer").visible= false

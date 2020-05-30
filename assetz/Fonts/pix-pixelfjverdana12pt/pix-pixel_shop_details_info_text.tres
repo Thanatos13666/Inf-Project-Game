@@ -3,5 +3,5 @@
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 9
+size = 8
 font_data = ExtResource( 1 )
