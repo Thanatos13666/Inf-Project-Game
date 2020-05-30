@@ -1,7 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player/Blau_1.gd" type="Script" id=1]
+[ext_resource path="res://Player/Skript/Blau_1.gd" type="Script" id=1]
 [ext_resource path="res://Player/Assets/blau_1/Hull_01.png" type="Texture" id=2]
+<<<<<<< HEAD
+=======
+[ext_resource path="res://Player/Skript/Waffe.gd" type="Script" id=3]
+>>>>>>> 42acc85c4c604acdeef89fa7b1c00b47ec196b2c
 [ext_resource path="res://Player/Assets/blau_1/Gun_01.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
