@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Inf-Project-Game"
-run/main_scene="res://Player/Blau_1.tscn"
+run/main_scene="res://Main_menu_group/Main_menu.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -100,9 +100,6 @@ CAM_zoom_out_wheel={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-
-[input]
-
 ui_remaus={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
