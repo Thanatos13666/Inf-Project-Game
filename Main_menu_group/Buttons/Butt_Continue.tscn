@@ -8,7 +8,7 @@ script/source = "extends Button
 
 
 func _on_Continue_pressed():
-	get_tree().change_scene('res://Main_menu_group/sub_scenen/Continue.tscn')
+	get_tree().change_scene(\"res://game/gui/CAM.tscn\")
 "
 
 [node name="Continue" instance=ExtResource( 1 )]

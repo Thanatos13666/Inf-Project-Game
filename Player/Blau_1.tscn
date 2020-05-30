@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Blau_1.gd" type="Script" id=1]
 [ext_resource path="res://Player/Assets/blau_1/Hull_01.png" type="Texture" id=2]
-[ext_resource path="res://Player/Waffe.gd" type="Script" id=3]
 [ext_resource path="res://Player/Assets/blau_1/Gun_01.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -20,25 +19,22 @@ rotation = 1.5708
 texture = ExtResource( 2 )
 
 [node name="Waffe" type="KinematicBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( -46.5248, -2.58472 )
 rotation = 1.5708
-script = ExtResource( 3 )
 
 [node name="Waffe" type="Sprite" parent="Waffe"]
 position = Vector2( 2.58455, -45.2326 )
 texture = ExtResource( 4 )
 
 [node name="Area2D" type="Area2D" parent="Waffe"]
-editor/display_folded = true
 position = Vector2( 2.58455, -46.5248 )
 rotation = -1.5708
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Waffe/Area2D"]
-position = Vector2( 7.62939e-006, 0 )
+position = Vector2( 7.62939e-06, 0 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.534134, -0.927582 )
+position = Vector2( 1.46587, -0.927582 )
 rotation = 1.5708
 shape = SubResource( 2 )
