@@ -8,9 +8,13 @@
 [node name="units" type="Node2D"]
 
 [node name="pre_unit" parent="." instance=ExtResource( 2 )]
+position = Vector2( 500.252, 164.97 )
 
 [node name="tank" parent="." instance=ExtResource( 1 )]
+position = Vector2( 310.202, 164.378 )
 
 [node name="medic" parent="." instance=ExtResource( 3 )]
+position = Vector2( 311.872, 438.288 )
 
 [node name="scout" parent="." instance=ExtResource( 4 )]
+position = Vector2( 500.603, 436.618 )
