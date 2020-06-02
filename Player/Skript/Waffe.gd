@@ -51,3 +51,4 @@ func Input_key():
 			while r > 360:
 				r = r - 360;
 			set_rotation_degrees(r);
+
