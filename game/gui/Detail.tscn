@@ -280,7 +280,6 @@ text = "111"
 valign = 1
 
 [node name="Entry 6" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 100.0
 margin_right = 137.0
 margin_bottom = 118.0
@@ -307,7 +306,6 @@ text = "111"
 valign = 1
 
 [node name="Entry 7" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 120.0
 margin_right = 137.0
 margin_bottom = 138.0
