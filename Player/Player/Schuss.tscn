@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/Skript/Schuss.gd" type="Script" id=1]
+[ext_resource path="res://Player/Assets/Explosion.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Explosion"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.32549
+height = 9.22891
+
+[node name="Schuss" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.61768, 1.61766 )
+texture = ExtResource( 2 )
+vframes = 3
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+anims/Explosion = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.52588e-005, -0.323534 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
