@@ -77,7 +77,6 @@ margin_right = 578.0
 margin_bottom = 226.0
 scene_to_load = "res://Main_menu_group/sub_scenen/Continue.tscn"
 
-
 [node name="options" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
