@@ -17,7 +17,8 @@ func _on_Button_pressed():
 	emit_signal(\"show_details\",Shop_ID)
 	
 	
-	"
+	
+"
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
