@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Main_menu_group/Main_menu.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Main_menu_group/Buttons/Butt_New_Game.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Main_menu_group/Buttons/Butt_Continue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Main_menu_group/Buttons/Butt_Options.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Main_menu_group/Buttons/Butt_Beenden.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assetz/animations/fade/Fade_in.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 7 )
+
+[node name="Titel_Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MC" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 60.0
+margin_top = 40.0
+margin_right = -60.0
+margin_bottom = -40.0
+
+[node name="Menue" type="VBoxContainer" parent="MC"]
+margin_right = 1160.0
+margin_bottom = 640.0
+
+[node name="Logo" type="TextureRect" parent="MC/Menue"]
+margin_right = 1160.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource( 2 )
+stretch_mode = 7
+
+[node name="centerrow" type="HBoxContainer" parent="MC/Menue"]
+margin_top = 124.0
+margin_right = 1160.0
+margin_bottom = 640.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LeftCon" type="VBoxContainer" parent="MC/Menue/centerrow"]
+margin_right = 578.0
+margin_bottom = 516.0
+size_flags_horizontal = 3
+
+[node name="Buttons" type="VBoxContainer" parent="MC/Menue/centerrow/LeftCon"]
+margin_right = 578.0
+margin_bottom = 473.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="New_Game" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 578.0
+margin_bottom = 103.0
+scene_to_load = "res://Main_menu_group/sub_scenen/New_Game.tscn"
+
+[node name="Continue" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 123.0
+margin_right = 578.0
+margin_bottom = 226.0
+scene_to_load = "res://Main_menu_group/sub_scenen/Continue.tscn"
+
+[node name="options" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 246.0
+margin_right = 578.0
+margin_bottom = 349.0
+scene_to_load = "res://Main_menu_group/sub_scenen/Options.tscn"
+
+[node name="Beenden" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 369.0
+margin_right = 578.0
+margin_bottom = 473.0
+scene_to_load = "END"
+
+[node name="Label" type="Label" parent="MC/Menue/centerrow/LeftCon"]
+margin_top = 477.0
+margin_right = 578.0
+margin_bottom = 516.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Version 0.0.1
+more stuff"
+
+[node name="MarginContainer" type="MarginContainer" parent="MC/Menue/centerrow"]
+margin_left = 582.0
+margin_right = 1160.0
+margin_bottom = 516.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MC/Menue/centerrow/MarginContainer"]
+margin_right = 578.0
+margin_bottom = 516.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="Fade_effekt" parent="." instance=ExtResource( 8 )]
+visible = false

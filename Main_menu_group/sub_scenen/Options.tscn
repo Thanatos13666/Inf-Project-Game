@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_48_preset.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_optionst.tres" type="DynamicFont" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+onready var opt = get_node(\"VBoxContainer/ScrollContainer/VBoxContainer2\")
+
+func _ready():
+	pass
+
+
+
+func _draw():
+	#get curent setings and dsplay them 
+	
+	pass
+
+func _on_cancel_pressed():
+	get_tree().change_scene('res://Main_menu_group/Main_menu.tscn')
+
+
+func _on_OK_pressed():
+	
+
+	
+	
+	
+	
+	get_tree().change_scene('res://Main_menu_group/Main_menu.tscn')
+	"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 69.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Opotionen"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 73.0
+margin_right = 1280.0
+margin_bottom = 616.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 1280.0
+margin_bottom = 543.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Entry 1" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer2"]
+margin_right = 1280.0
+margin_bottom = 69.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer2/Entry 1"]
+margin_right = 638.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+text = "test"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/ScrollContainer/VBoxContainer2/Entry 1"]
+margin_left = 642.0
+margin_right = 1280.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1.6
+step = 0.01
+value = 1.0
+ticks_on_borders = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 620.0
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="cancel" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 638.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Abrechen"
+
+[node name="OK" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 642.0
+margin_right = 1280.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Akzeptieren"
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/OK" to="." method="_on_OK_pressed"]

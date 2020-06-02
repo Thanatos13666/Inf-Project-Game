@@ -1,0 +1,32 @@
+Veränderungen im bransch Sander
+
+#Projekt Einstellungen:
+-Auflösung zu 1280 x 720 gesetzt
+-generele Hintergrund auf HEX#263138 gesetzt
+
+#Neue Ordner-Inf-Project-Game\Main_menu_group
+-Main_menu_group\Buttons
+-Main_menu_group\sub_scenen
+-assetz\Fonts
+-Fonts\pix-pixelfjverdana12pt
+-assetz\animations
+-animations\fade
+
+#Neue Dateien (außer scenen)
+-Fonts\pix-pixelfjverdana12pt\PixelFJVerdana12pt.ttf + dazugehörende legal txt
+
+#Neue Scenen mit kurtzer Beschreibung:
+-Main_menu //Erste Sene die aufkommen wird wenn das spiel gestartet wird mit Hauptmenü
+-Menu_Buttons 4mal. ein preset und jeweils pro knopf
+-tmp_scenen 4mal. ein preset und für jeden knopf ein tmp
+
+#neue skripte
+-Main_menu_group\Buttons\Menu_button.gd 
+	sorgt dafür das alle abgeleiteten scenen einen platzhalter haben wo der jewiliege buton hinführen soll
+-Main_menu_group\sub_scenen\Return_to_main.gd
+	ist der "zurück button inn allen abgeleiteten scenen"
+-Main_menu_group\Main_menu.gd
+	wein igentein button im main menü gedrückt wird, um zu die richtige scene zu öfnen
+
+#Veränderung an anderen Scenen:
+-keine
