@@ -9,8 +9,6 @@
 [ext_resource path="res://Player/Skript/Abschuss.gd" type="Script" id=5]
 [ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=6]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 84, 124 )
 
@@ -33,16 +31,12 @@ extents = Vector2( 105.592, 10 )
 
 [node name="Blau_1" type="KinematicBody2D"]
 
-
 position = Vector2( 88.6177, 54.8973 )
 script = ExtResource( 1 )
-
-
 
 [node name="Rumpf" type="Sprite" parent="."]
 position = Vector2( 28.5987, 0.802521 )
 rotation = 1.5708
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 27.2492, 2.77592 )
@@ -56,7 +50,6 @@ rotation = 1.5708
 script = ExtResource( 1 )
 
 [node name="Waffe" type="Sprite" parent="Waffe"]
-
 
 position = Vector2( -1.22339, -57.2144 )
 texture = ExtResource( 4 )
@@ -82,7 +75,6 @@ anims/Abschuss = SubResource( 2 )
 [node name="Area2D" type="Area2D" parent="Waffe"]
 
 position = Vector2( 21.5847, -51.5248 )
-
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Waffe/Area2D"]
 position = Vector2( -22.6404, -8.5809 )
