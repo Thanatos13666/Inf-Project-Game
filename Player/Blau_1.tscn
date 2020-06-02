@@ -34,7 +34,6 @@ extents = Vector2( 105.592, 10 )
 position = Vector2( 88.6177, 54.8973 )
 script = ExtResource( 1 )
 
-
 [node name="Rumpf" type="Sprite" parent="."]
 position = Vector2( 28.5987, 0.802521 )
 rotation = 1.5708
