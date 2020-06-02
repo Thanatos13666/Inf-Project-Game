@@ -54,7 +54,6 @@ script = ExtResource( 1 )
 position = Vector2( -1.22339, -57.2144 )
 texture = ExtResource( 4 )
 
-
 [node name="Abschuss" type="Node2D" parent="Waffe"]
 position = Vector2( -1.79321, -163.657 )
 script = ExtResource( 5 )
@@ -73,7 +72,6 @@ frame = 7
 anims/Abschuss = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="Waffe"]
-
 position = Vector2( 21.5847, -51.5248 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Waffe/Area2D"]
