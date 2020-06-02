@@ -52,7 +52,3 @@ func Input_key():
 				r = r - 360;
 			set_rotation_degrees(r);
 
-
-
-
-
