@@ -15,17 +15,17 @@ func _ready():
 	get_tree().get_root().connect("size_changed", self, "update_ofset")
 	px_hoehe = 6400.0
 	px_breite =6400.0
-	if get_tree().get_root().has_node("MAP"):
-		px_hoehe = (get_parent().get_parent().hoehe*64) # wenn hier ein fheler ist: die camara darf nicht dierekt getartet werden sondern muss immer über eine map gestartet werden
-		px_breite = (get_parent().get_parent().breite*64)
+	
 
 func _process(delta):
 	change = Vector2(0,0)
 
 #inputs apfragen
+	if get_parent().visible==true:
+		cam_activ()
 
 
-
+func cam_activ():
 	if Input.is_action_just_released("CAM_zoom_in_wheel"):
 		zoom_s += zoom_speed
 
@@ -125,4 +125,9 @@ func _process(delta):
 func update_ofset():
 	get_node("Camera2D").position.y=780 /2 - (780  -get_viewport_rect().size.y)/2
 	get_node("Camera2D").position.x=1280/2 - (1280 -get_viewport_rect().size.x)/2
-	
+
+func r_updateborders():
+	var mapdata =owner.get_node("MAP").get_child(0)
+	px_hoehe = mapdata.hoehe*64
+	px_breite = mapdata.breite*64
+	print(owner.get_node("MAP").get_child(0))

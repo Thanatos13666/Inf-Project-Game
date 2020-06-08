@@ -5,19 +5,57 @@
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
+onready var dropdown = get_node(\"VBoxContainer/Chose mapp/OptionButton\")#
+
+signal send_data(sp1_Name, sp2_Name, Map)
 
 
-
+func _ready():
+	
+	#lade wlche maps es gibt
+	var file_name
+	var path =\"res://game/maps/\"
+	global.Map +=\".tscn\"
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		file_name = dir.get_next()
+		while file_name != \"\":
+			if !dir.current_is_dir():#filtern von ordnern
+				dropdown.add_item(file_name.replace(\".tscn\",\"\"))
+			file_name = dir.get_next()
+	else:
+		print(\"An error occurred when trying to access the path.\")
+		get_tree().quit()
+	
+	
+	#connect(\"send_data\",\"\",\"recive_data\")
+	
 
 func _on_Button2_pressed():
 	get_tree().change_scene('res://Main_menu_group/Main_menu.tscn')
-
-
-func _on_start_pressed():
-	print(get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer/TextEdit\").text)
-	print(get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer2/TextEdit\").text)
-	get_tree().change_scene('res://game/maps/beispiel_map.tscn')
 	
+	
+func _on_start_pressed():
+	
+	
+	
+	global.sp1Name  = get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer/sp1_edit\").text 
+	global.sp2Name = get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer2/sp2_edit\").text
+	global.Map=dropdown.text
+	var neues_spiel_name  = \"res://SaveGames/USER/\"+get_node(\"VBoxContainer/Spielname/GameName\").text+\".tscn\"
+	
+	
+	#Überprüfen das alle daten vorhanden sind
+	
+	
+	global.cur_game=neues_spiel_name
+	var dir = Directory.new()
+	#dir.copy(\"res://SaveGames/Blank_game.tscn\",neues_spiel_name)
+	get_tree().change_scene(\"res://SaveGames/Blank_game.tscn\")
+	#emit_signal(\"send_data\",sp1_Name,sp2_Name,dropdown.text)
+	#get_tree().change_scene('res://Main_menu_group/sub_scenen/New_Game.tscn')
+	#print(\"this gest executed\")
 	
 	
 "
@@ -36,6 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
 margin_right = 1280.0
 margin_bottom = 108.0
 
@@ -49,15 +88,37 @@ text = "Neues Spiel Erstellen"
 align = 1
 valign = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Spielname" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 112.0
 margin_right = 1280.0
-margin_bottom = 602.0
+margin_bottom = 220.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/Spielname"]
+margin_right = 528.0
+margin_bottom = 108.0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "Spiel Name:  "
+align = 1
+valign = 1
+
+[node name="GameName" type="LineEdit" parent="VBoxContainer/Spielname"]
+margin_left = 532.0
+margin_right = 1280.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
+margin_top = 224.0
+margin_right = 1280.0
+margin_bottom = 484.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+editor/display_folded = true
 margin_right = 638.0
-margin_bottom = 490.0
+margin_bottom = 260.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
@@ -69,17 +130,21 @@ text = "Spieler 1"
 align = 1
 valign = 1
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="sp1_edit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
 margin_top = 112.0
 margin_right = 638.0
-margin_bottom = 490.0
+margin_bottom = 260.0
+focus_neighbour_right = NodePath("../../VBoxContainer2/sp2_edit")
+focus_neighbour_bottom = NodePath("../../../Chose mapp/OptionButton")
+focus_next = NodePath("../../VBoxContainer2/sp2_edit")
+focus_previous = NodePath("../../../HBoxContainer3/start")
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 642.0
 margin_right = 1280.0
-margin_bottom = 490.0
+margin_bottom = 260.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
@@ -90,14 +155,46 @@ custom_fonts/font = ExtResource( 1 )
 text = "Spieler 2"
 align = 1
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+[node name="sp2_edit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
 margin_top = 112.0
 margin_right = 638.0
-margin_bottom = 490.0
+margin_bottom = 260.0
+focus_neighbour_left = NodePath("../../VBoxContainer/sp1_edit")
+focus_neighbour_bottom = NodePath("../../../Chose mapp/OptionButton")
+focus_next = NodePath("../../../Chose mapp/OptionButton")
+focus_previous = NodePath("../../VBoxContainer/sp1_edit")
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 
+[node name="Chose mapp" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
+margin_top = 488.0
+margin_right = 1280.0
+margin_bottom = 602.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/Chose mapp"]
+margin_right = 210.0
+margin_bottom = 108.0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 1 )
+text = "MAP:"
+align = 1
+valign = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Chose mapp"]
+margin_left = 214.0
+margin_right = 1280.0
+margin_bottom = 114.0
+focus_neighbour_left = NodePath("../../HBoxContainer3/abrechen")
+focus_neighbour_top = NodePath("../../HBoxContainer2/VBoxContainer2/sp2_edit")
+focus_neighbour_bottom = NodePath("../../HBoxContainer3/start")
+focus_next = NodePath("../../HBoxContainer3/abrechen")
+focus_previous = NodePath("../../HBoxContainer2/VBoxContainer2/sp2_edit")
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
 margin_top = 606.0
 margin_right = 1280.0
 margin_bottom = 720.0
@@ -106,6 +203,10 @@ margin_bottom = 720.0
 margin_right = 638.0
 margin_bottom = 114.0
 rect_min_size = Vector2( 0, 100 )
+focus_neighbour_top = NodePath("../../Chose mapp/OptionButton")
+focus_neighbour_right = NodePath("../start")
+focus_next = NodePath("../start")
+focus_previous = NodePath("../../Chose mapp/OptionButton")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Abrechen"
@@ -115,6 +216,10 @@ margin_left = 642.0
 margin_right = 1280.0
 margin_bottom = 114.0
 rect_min_size = Vector2( 0, 100 )
+focus_neighbour_left = NodePath("../abrechen")
+focus_neighbour_top = NodePath("../../Chose mapp/OptionButton")
+focus_next = NodePath("../../HBoxContainer2/VBoxContainer/sp1_edit")
+focus_previous = NodePath("../abrechen")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Spiel Starten"

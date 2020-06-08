@@ -31,6 +31,10 @@ func _on_Button_pressed(id):
 func speichern():
 	#code save
 	print(\"Save\")
+	var packed_scene = PackedScene.new()
+	packed_scene.pack(get_tree().get_current_scene())
+	print(global.cur_game)
+	ResourceSaver.save(global.cur_game, packed_scene)
 	pass
 	
 	

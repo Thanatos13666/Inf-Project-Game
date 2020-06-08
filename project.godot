@@ -19,6 +19,10 @@ config/name="Inf-Project-Game"
 run/main_scene="res://Main_menu_group/Main_menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://game/global.gd"
+
 [display]
 
 window/size/width=1280
