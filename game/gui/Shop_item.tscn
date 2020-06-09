@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Player/Assets/blau_1/Hull_01.png" type="Texture" id=2]
-[ext_resource path="res://Player/Assets/blau_1/Gun_01.png" type="Texture" id=3]
+[ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=2]
+[ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
@@ -11,8 +11,8 @@ signal show_details()
 
 func _ready():
 	#if get_tree().get_root().has_node(\"Shop_scroll_con\"):
-		Shop_ID=get_index()
-		
+		#Shop_ID=get_index()
+		pass
 
 func _on_Button_pressed():
 	emit_signal(\"show_details\",Shop_ID)#Shop_ID = ObjekID des zu zeigenden panzers

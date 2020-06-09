@@ -6,10 +6,14 @@
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
-
+var cur_showing
 func _ready():
 	visible =false
-
+	print(\"details\")
+	print(owner)
+	print(owner.owner)
+	print(owner.owner.owner)
+	
 	for sp_item in self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_children():
 		sp_item.connect(\"show_details\",self,\"show_details_received\")
 	
@@ -21,16 +25,29 @@ func _on_Button_pressed():
 
 
 func show_details_received(Shop_ID):
+	cur_showing=Shop_ID
 	visible =true
-	var test=Array()
-	test[0]=Array()
-	test[0][0]=3
 	
 	
 	get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Label\").text = str(Shop_ID) #get_name(id)
 	var liste =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\")
 	#liste.get_child(1).get_node(
 	
+	
+	
+func _on_Kaufen_pressed():
+	var cur_spieler
+	if owner.owner.player1:
+		cur_spieler = owner.owner.sp1
+	else:
+		cur_spieler = owner.owner.sp2
+#	if cur_spieler.geld <= cur_showing.atribute[0][1]:
+#		return
+	var spawn =load(cur_showing.filename).instance()
+	spawn.position.x = 100#rect_position.x
+	spawn.position.y = 100# rect_position.y
+	cur_spieler.get_parent().get_parent().get_node(\"Units\").add_child(spawn)
+	pass # Replace with function body.
 "
 
 [sub_resource type="GDScript" id=2]
@@ -175,7 +192,7 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Info"
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
+[node name="Kaufen" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
 margin_left = 47.0
 margin_right = 113.0
 margin_bottom = 24.0
@@ -196,3 +213,4 @@ margin_bottom = 156.0
 rect_min_size = Vector2( 0, 3 )
 [connection signal="draw" from="." to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer" method="_on_MarginContainer_draw"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons/Kaufen" to="." method="_on_Kaufen_pressed"]

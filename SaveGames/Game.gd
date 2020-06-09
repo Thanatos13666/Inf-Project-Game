@@ -1,5 +1,9 @@
 extends Node
 var player1 =false
+var sp1
+var sp2
+signal sp1_dran
+signal sp2_dran
 #prelod all maps 
 #ist langsam aber einfach
 
@@ -12,10 +16,13 @@ signal updateborders #dammit bestimmter code nach dieser -r
 
 func _ready():
 	print(self)
-	var sp1 =get_node("Spieler/SP1/Control/GUI")
-	var sp2 = get_node("Spieler/SP2/Control/GUI")
+	sp1 =get_node("Spieler/SP1/Control/GUI")
+	sp2 = get_node("Spieler/SP2/Control/GUI")
 	var sp1_info = sp1.get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
 	var sp2_info = sp2.get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
+	connect("sp1_dran",sp1,"jetzt_dran")
+	connect("sp2_dran",sp2,"jetzt_dran")
+	
 	
 	next_player()#spieler 1 begint + spieler 2 verstecken
 	
@@ -70,11 +77,13 @@ func next_player():
 		get_node("Spieler/SP1/Control").visible = true
 		get_node("Spieler/SP1/Control/GUI/Camera2D").current = true
 		get_node("Spieler/SP2/Control").visible = false
+		emit_signal("sp1_dran")
 	else :
 		get_node("Spieler/SP2/Control").visible = true
 		get_node("Spieler/SP2/Control/GUI/Camera2D").current = true
 		get_node("Spieler/SP1/Control").visible = false
-	
+		emit_signal("sp2_dran")
+
 	
 	
 	
