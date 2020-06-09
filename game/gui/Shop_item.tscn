@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=2]
+[ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
@@ -10,11 +11,11 @@ signal show_details()
 
 func _ready():
 	#if get_tree().get_root().has_node(\"Shop_scroll_con\"):
-		Shop_ID=get_index()
-		print (get_index())
+		#Shop_ID=get_index()
+		pass
 
 func _on_Button_pressed():
-	emit_signal(\"show_details\",Shop_ID)
+	emit_signal(\"show_details\",Shop_ID)#Shop_ID = ObjekID des zu zeigenden panzers
 	
 	
 	
@@ -62,7 +63,7 @@ autowrap = true
 clip_text = true
 max_lines_visible = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+[node name="rumpf" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 margin_top = 29.0
 margin_right = 92.0
 margin_bottom = 96.0
@@ -70,7 +71,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
 expand = true
-stretch_mode = 7
+stretch_mode = 6
+
+[node name="gun" type="TextureRect" parent="HBoxContainer/VBoxContainer/rumpf"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 margin_top = 100.0

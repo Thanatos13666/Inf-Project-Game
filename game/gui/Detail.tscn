@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_shop_details.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_shop_details_info_text.tres" type="DynamicFont" id=2]
+[ext_resource path="res://game/gui/deiatl_eintrag.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
-
+var cur_showing
 func _ready():
 	visible =false
+	print(\"details\")
+	print(owner)
+	print(owner.owner)
+	print(owner.owner.owner)
 	
 	for sp_item in self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_children():
 		sp_item.connect(\"show_details\",self,\"show_details_received\")
@@ -20,11 +25,29 @@ func _on_Button_pressed():
 
 
 func show_details_received(Shop_ID):
+	cur_showing=Shop_ID
 	visible =true
+	
+	
 	get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Label\").text = str(Shop_ID) #get_name(id)
 	var liste =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\")
 	#liste.get_child(1).get_node(
 	
+	
+	
+func _on_Kaufen_pressed():
+	var cur_spieler
+	if owner.owner.player1:
+		cur_spieler = owner.owner.sp1
+	else:
+		cur_spieler = owner.owner.sp2
+#	if cur_spieler.geld <= cur_showing.atribute[0][1]:
+#		return
+	var spawn =load(cur_showing.filename).instance()
+	spawn.position.x = 100#rect_position.x
+	spawn.position.y = 100# rect_position.y
+	cur_spieler.get_parent().get_parent().get_node(\"Units\").add_child(spawn)
+	pass # Replace with function body.
 "
 
 [sub_resource type="GDScript" id=2]
@@ -83,23 +106,23 @@ rect_min_size = Vector2( 3, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 3.0
-margin_right = 170.0
+margin_right = 116.0
 margin_bottom = 150.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
-margin_right = 167.0
+margin_right = 113.0
 margin_bottom = 150.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
-margin_right = 167.0
+margin_right = 113.0
 margin_bottom = 150.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="top line" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 167.0
+margin_right = 113.0
 margin_bottom = 28.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line"]
@@ -111,8 +134,8 @@ custom_fonts/font = ExtResource( 1 )
 text = "Names"
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line"]
-margin_left = 139.0
-margin_right = 167.0
+margin_left = 85.0
+margin_right = 113.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 28, 0 )
 custom_fonts/font = ExtResource( 2 )
@@ -120,7 +143,7 @@ text = "X"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 32.0
-margin_right = 167.0
+margin_right = 113.0
 margin_bottom = 122.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -132,7 +155,7 @@ rect_min_size = Vector2( 5, 0 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 9.0
-margin_right = 158.0
+margin_right = 104.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 0, 90 )
 size_flags_horizontal = 3
@@ -140,416 +163,46 @@ scroll_horizontal_enabled = false
 script = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
-margin_right = 137.0
-margin_bottom = 278.0
+margin_right = 95.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 2
 
-[node name="Entry 1" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 1"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "Leben"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 1"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 20.0
-margin_right = 137.0
-margin_bottom = 38.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 2"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "Reichweite"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 2"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 40.0
-margin_right = 137.0
-margin_bottom = 58.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 3"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "Schaden"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 3"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 4" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 60.0
-margin_right = 137.0
-margin_bottom = 78.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 4"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "Heilung"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 4"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 5" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 80.0
-margin_right = 137.0
-margin_bottom = 98.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 5"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "Geschwindikkeit"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 5"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 6" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 100.0
-margin_right = 137.0
-margin_bottom = 118.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 6"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "Schild"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 6"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 7" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 120.0
-margin_right = 137.0
-margin_bottom = 138.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 7"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 7"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 8" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 140.0
-margin_right = 137.0
-margin_bottom = 158.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 8"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 8"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 9" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 160.0
-margin_right = 137.0
-margin_bottom = 178.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 9"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 9"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 10" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 180.0
-margin_right = 137.0
-margin_bottom = 198.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 10"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 10"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 11" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 200.0
-margin_right = 137.0
-margin_bottom = 218.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 11"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 11"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 12" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 220.0
-margin_right = 137.0
-margin_bottom = 238.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 12"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 12"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 13" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 240.0
-margin_right = 137.0
-margin_bottom = 258.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 13"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 13"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
-
-[node name="Entry 14" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 260.0
-margin_right = 137.0
-margin_bottom = 278.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-
-[node name="text" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 14"]
-margin_right = 114.0
-margin_bottom = 18.0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "bsp"
-valign = 1
-
-[node name="NR" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Entry 14"]
-margin_left = 119.0
-margin_right = 137.0
-margin_bottom = 18.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
-text = "111"
-valign = 1
+[node name="Entry 13" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 95.0
+margin_bottom = 90.0
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 162.0
-margin_right = 167.0
+margin_left = 108.0
+margin_right = 113.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="butons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 126.0
-margin_right = 167.0
+margin_right = 113.0
 margin_bottom = 150.0
 rect_pivot_offset = Vector2( -321.093, -212.404 )
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
-margin_right = 81.0
+margin_right = 43.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Info"
 
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
-margin_left = 85.0
-margin_right = 167.0
+[node name="Kaufen" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
+margin_left = 47.0
+margin_right = 113.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Kaufen"
 
 [node name="right" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 170.0
-margin_right = 173.0
+margin_left = 116.0
+margin_right = 119.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 3, 0 )
 
@@ -560,3 +213,4 @@ margin_bottom = 156.0
 rect_min_size = Vector2( 0, 3 )
 [connection signal="draw" from="." to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer" method="_on_MarginContainer_draw"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons/Kaufen" to="." method="_on_Kaufen_pressed"]
