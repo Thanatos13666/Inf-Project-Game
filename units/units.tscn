@@ -12,6 +12,7 @@ position = Vector2( 500.252, 164.97 )
 
 [node name="tank" parent="." instance=ExtResource( 2 )]
 position = Vector2( 310.202, 164.378 )
+script = null
 
 [node name="medic" parent="." instance=ExtResource( 3 )]
 position = Vector2( 311.872, 438.288 )
