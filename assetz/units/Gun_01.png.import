@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hull_01.png-5e2494c0a1b22c131b1d7b376e57e69d.stex"
+path="res://.import/Gun_01.png-52c75b4befd5b769d538539bc5ef5cbb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Assets/blau_1/Hull_01.png"
-dest_files=[ "res://.import/Hull_01.png-5e2494c0a1b22c131b1d7b376e57e69d.stex" ]
+source_file="res://assetz/units/Gun_01.png"
+dest_files=[ "res://.import/Gun_01.png-52c75b4befd5b769d538539bc5ef5cbb.stex" ]
 
 [params]
 
