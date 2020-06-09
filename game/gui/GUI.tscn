@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assetz/topbar/backgroung.png" type="Texture" id=1]
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=2]
@@ -28,7 +28,25 @@ func _on_Button_pressed():
 #skript kann ewentuel mit anderen in dieser scene zusammen gefast werden
 "
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="GDScript" id=4]
+script/source = "extends VBoxContainer
+#Shop controler
+const sp_item = preload(\"res://game/gui/Shop_item.tscn\")
+
+
+
+func _ready():
+	var shop_item
+	for unit in owner.owner.get_node(\"units\").get_children():
+		shop_item = sp_item.instance()
+		shop_item.get_node(\"HBoxContainer/VBoxContainer/name\").text= unit.name
+		shop_item.get_node(\"HBoxContainer/VBoxContainer/rumpf\").texture =unit.get_node(\"KinematicBody2D/rumpf\").texture
+		shop_item.get_node(\"HBoxContainer/VBoxContainer/rumpf/gun\").texture=unit.get_node(\"KinematicBody2D/KinematicBody_Waffe/Waffe\").texture
+		shop_item.Shop_ID = unit #über gist die Objekt id anden buton
+		add_child(shop_item)
+"
+
+[sub_resource type="DynamicFont" id=5]
 size = 15
 font_data = ExtResource( 2 )
 
@@ -186,6 +204,7 @@ margin_right = 108.0
 margin_bottom = 1036.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = SubResource( 4 )
 
 [node name="Shop_item1" parent="VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer" instance=ExtResource( 5 )]
 margin_right = 108.0
@@ -244,10 +263,11 @@ rect_min_size = Vector2( 10, 0 )
 
 [node name="deatil group" type="VBoxContainer" parent="VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer"]
 margin_left = 124.0
-margin_right = 297.0
+margin_right = 243.0
 margin_bottom = 594.0
 
 [node name="Control" parent="VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/deatil group" instance=ExtResource( 6 )]
+margin_right = 119.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/margin hold/shop+ buton"]
 margin_top = 598.0
@@ -271,7 +291,7 @@ margin_right = 120.0
 margin_bottom = 41.0
 hint_tooltip = "klicke zum kaufen"
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 toggle_mode = true
 text = "P"
 script = ExtResource( 7 )

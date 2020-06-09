@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_shop_details_info_text.tres" type="DynamicFont" id=1]
+
+[node name="Entry 13" type="HBoxContainer"]
+editor/display_folded = true
+margin_right = 137.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 5
+
+[node name="text" type="Label" parent="."]
+margin_right = 114.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "bsp"
+valign = 1
+
+[node name="NR" type="Label" parent="."]
+margin_left = 119.0
+margin_right = 137.0
+margin_bottom = 18.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 1 )
+text = "111"
+valign = 1
