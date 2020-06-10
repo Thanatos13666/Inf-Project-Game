@@ -5,11 +5,31 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
+#variables----------------------------------------------------------------------
 var base_values = {
 	\"Preis\":120,
-	\"Leben\":5,
-	\"Angriff\":10
+	\"Leben\":10,
+	\"Angriff\":10,
+	\"Ausweichen\":40,
+	\"Reichweite\": 5,
+	\"Bewegungsrate\":8
 }
+
+var curr_values = {
+	\"Leben\":base_values.Leben,
+	\"Angriff\":base_values.Angriff,
+	\"Ausweichen\":base_values.Ausweichen,
+	\"Reichweite\":base_values.Reichweite,
+	\"Bewegungsrate\":base_values.Bewegungsrate,
+}
+
+var dashBonus = 4;
+
+#functions----------------------------------------------------------------------
+func dash():
+	if curr_values.Bewegungsrate == base_values.Bewegungsrate:
+		curr_values.Bewegungsrate += dashBonus;
+	pass
 "
 
 [node name="scout" instance=ExtResource( 1 )]
