@@ -38,15 +38,15 @@ func show_details_received(Shop_ID):
 func _on_Kaufen_pressed():
 	var cur_spieler
 	if owner.owner.player1:
-		cur_spieler = owner.owner.sp1
+		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
 	else:
-		cur_spieler = owner.owner.sp2
+		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
 #	if cur_spieler.geld <= cur_showing.atribute[0][1]:
 #		return
 	var spawn =load(cur_showing.filename).instance()
-	spawn.position.x = 100#rect_position.x
-	spawn.position.y = 100# rect_position.y
-	cur_spieler.get_parent().get_parent().get_node(\"Units\").add_child(spawn)
+	spawn.position.x = cur_spieler.get_node(\"Camera2D\").position.x
+	spawn.position.y = cur_spieler.get_node(\"Camera2D\").position.y
+	cur_spieler.get_node(\"Units\").add_child(spawn)
 	pass # Replace with function body.
 "
 
