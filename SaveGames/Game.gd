@@ -16,8 +16,8 @@ signal updateborders #dammit bestimmter code nach dieser -r
 
 func _ready():
 	print(self)
-	sp1 =get_node("Spieler/SP1/Control/GUI")
-	sp2 = get_node("Spieler/SP2/Control/GUI")
+	sp1 =get_node("Spieler/SP1/CL/Control/GUI")
+	sp2 = get_node("Spieler/SP2/CL/Control/GUI")
 	var sp1_info = sp1.get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
 	var sp2_info = sp2.get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
 	connect("sp1_dran",sp1,"jetzt_dran")
@@ -74,14 +74,14 @@ func next_player():
 	print("wechsele spiler")
 	player1 = !player1
 	if (player1):
-		get_node("Spieler/SP1/Control").visible = true
-		get_node("Spieler/SP1/Control/GUI/Camera2D").current = true
-		get_node("Spieler/SP2/Control").visible = false
+		get_node("Spieler/SP1/CL/Control").visible = true
+		get_node("Spieler/SP1/Camera2D").current = true
+		get_node("Spieler/SP2/CL/Control").visible = false
 		emit_signal("sp1_dran")
 	else :
-		get_node("Spieler/SP2/Control").visible = true
-		get_node("Spieler/SP2/Control/GUI/Camera2D").current = true
-		get_node("Spieler/SP1/Control").visible = false
+		get_node("Spieler/SP2/CL/Control").visible = true
+		get_node("Spieler/SP2/Camera2D").current = true
+		get_node("Spieler/SP1/CL/Control").visible = false
 		emit_signal("sp2_dran")
 
 	
