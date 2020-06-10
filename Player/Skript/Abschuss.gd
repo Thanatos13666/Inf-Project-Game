@@ -5,6 +5,7 @@ var schuss_objekt
 var timer = true
 
 
+
 func _ready():
 	pass 
 
@@ -15,9 +16,11 @@ func _process(delta):
 		timer = false 
 		$Timer.start()
 		schuss_objekt = schuss.instance()
-		schuss_objekt.transform = transform
-		get_parent().add_child(schuss_objekt)
-		$Sprite/AnimationPlayer.play("Abschuss")
+		schuss_objekt.position = (get_global_position())
+		schuss_objekt.rotate((PI/180)*(get_parent().r+27))
+		get_tree().get_root().add_child(schuss_objekt)
+		$Node2D/Sprite/AnimationPlayer.play("Abschuss")
+
 
 
 func _on_Timer_timeout():

@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Skript/Blau_1.gd" type="Script" id=1]
-[ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=2]
-[ext_resource path="res://Player/Skript/Abschuss.gd" type="Script" id=3]
-[ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=4]
+[ext_resource path="res://Player/Assets/blau_1/Hull_01.png" type="Texture" id=2]
+[ext_resource path="res://Player/Skript/Waffe.gd" type="Script" id=3]
+[ext_resource path="res://Player/Assets/blau_1/Gun_01.png" type="Texture" id=4]
+[ext_resource path="res://Player/Skript/Abschuss.gd" type="Script" id=5]
+[ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 84, 124 )
+extents = Vector2( 84, 125.133 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -32,35 +34,41 @@ script = ExtResource( 1 )
 [node name="Rumpf" type="Sprite" parent="."]
 position = Vector2( 28.5987, 0.802521 )
 rotation = 1.5708
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 27.2492, 2.77592 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Waffe" type="KinematicBody2D" parent="."]
 position = Vector2( -38.2953, 2.64449 )
 rotation = 1.5708
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="Waffe" type="Sprite" parent="Waffe"]
 position = Vector2( -1.22339, -57.2144 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="Abschuss" type="Node2D" parent="Waffe"]
-position = Vector2( -1.79321, -163.657 )
-script = ExtResource( 3 )
+position = Vector2( 0.527863, -246.452 )
+script = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="Waffe/Abschuss"]
 
-[node name="Sprite" type="Sprite" parent="Waffe/Abschuss"]
-position = Vector2( 1.09118, -16.4475 )
-scale = Vector2( 1, 0.971935 )
-texture = ExtResource( 4 )
+[node name="Node2D" type="Node2D" parent="Waffe/Abschuss"]
+position = Vector2( -1.65485, 68.9223 )
+rotation = 1.5708
+scale = Vector2( 1, 0.887303 )
+
+[node name="Sprite" type="Sprite" parent="Waffe/Abschuss/Node2D"]
+rotation = 4.71239
+texture = ExtResource( 6 )
 vframes = 3
 hframes = 3
 frame = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Waffe/Abschuss/Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Waffe/Abschuss/Node2D/Sprite"]
 anims/Abschuss = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="Waffe"]
