@@ -5,14 +5,6 @@ const rotation_speed = 2
 var r = 90
 
 
-
-
-
-func _ready():
-	pass
-
-
-
 func _process(delta):
 	Input_key()
 	

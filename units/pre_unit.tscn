@@ -1,5 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=1]
+[ext_resource path="res://units/Skript/Waffe.gd" type="Script" id=2]
 [ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=3]
 [ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=5]
 
@@ -10,107 +12,96 @@ func place_holder():
 	pass;
 "
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=5]
 script/source = "extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
+
+export (int) var speed = 200
+
+var target = Vector2()
+var velocity = Vector2()
+
+func _physics_process(delta):
+
+	rotation = velocity.angle()
+	velocity = (target - position).normalized() * speed
+	if (target - position).length() > 5:
+		move_and_slide(velocity)
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends Node2D
-
-
-const rotation_speed = 2
-var r = 90
-
-
-
-
-
-func _ready():
-	pass
-
-
-
-func _process(delta):
-	Input_key()
-	
-
-func Input_key():
-
-
-	if Input.is_action_pressed(\"ui_a\"):
-
-		r -= rotation_speed;
-
-		if r == 0:
-			r = 360;
-			set_rotation_degrees(r);
-
-		if r < 0:
-			r *= -1;
-			set_rotation_degrees(r);
-
-		if r > 0 && r <= 360:
-			set_rotation_degrees(r);
-
-
-	if Input.is_action_pressed(\"ui_d\"):
-
-		r += rotation_speed;
-
-		if r < 360:
-			set_rotation_degrees(r);
-
-		if r == 360:
-			r = 0;
-			set_rotation_degrees(r);
-
-		if r > 360:
-			while r > 360:
-				r = r - 360;
-			set_rotation_degrees(r);
-
+func _input(event):
+	if event.is_action_pressed('ui_remaus'):
+		target = get_global_mouse_position()
 "
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 10, 106.05 )
+extents = Vector2( 125.059, 85.556 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 83.4152, 125.218 )
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 105.592, 10 )
 
 [node name="pre_unit" type="Node2D"]
 position = Vector2( 396.7, 225.096 )
 script = SubResource( 1 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-script = SubResource( 2 )
+[node name="pre_unit" type="KinematicBody2D" parent="."]
+position = Vector2( 88.6177, 54.8973 )
+script = SubResource( 5 )
 
-[node name="rumpf" type="Sprite" parent="KinematicBody2D"]
+[node name="Rumpf" type="Sprite" parent="pre_unit"]
+position = Vector2( 28.5987, 0.802521 )
+rotation = 1.5708
 texture = ExtResource( 3 )
 
-[node name="KinematicBody_Waffe" type="KinematicBody2D" parent="KinematicBody2D"]
-script = SubResource( 3 )
-
-[node name="Waffe" type="Sprite" parent="KinematicBody2D/KinematicBody_Waffe"]
-texture = ExtResource( 5 )
-
-[node name="CollisionShapeWaffe" type="CollisionShape2D" parent="KinematicBody2D/KinematicBody_Waffe"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pre_unit"]
+position = Vector2( 27.2492, 2.77592 )
 shape = SubResource( 4 )
 
-[node name="CollisionShape_Rumpf" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 0.0870667, 2.138 )
-shape = SubResource( 5 )
+[node name="Waffe" type="KinematicBody2D" parent="pre_unit"]
+position = Vector2( -38.2953, 2.64449 )
+rotation = 1.5708
+script = ExtResource( 2 )
+
+[node name="Waffe" type="Sprite" parent="pre_unit/Waffe"]
+position = Vector2( -1.22339, -57.2144 )
+texture = ExtResource( 5 )
+
+[node name="Abschuss" type="Node2D" parent="pre_unit/Waffe"]
+position = Vector2( -1.79321, -163.657 )
+
+[node name="Timer" type="Timer" parent="pre_unit/Waffe/Abschuss"]
+
+[node name="Sprite" type="Sprite" parent="pre_unit/Waffe/Abschuss"]
+position = Vector2( 1.09118, -16.4475 )
+scale = Vector2( 1, 0.971935 )
+texture = ExtResource( 1 )
+vframes = 3
+hframes = 3
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pre_unit/Waffe/Abschuss/Sprite"]
+anims/Abschuss = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="pre_unit/Waffe"]
+position = Vector2( 21.5847, -51.5248 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="pre_unit/Waffe/Area2D"]
+position = Vector2( -22.6404, -8.5809 )
+rotation = -1.5708
+shape = SubResource( 3 )
+[connection signal="timeout" from="pre_unit/Waffe/Abschuss/Timer" to="pre_unit/Waffe/Abschuss" method="_on_Timer_timeout"]
