@@ -1,38 +1,48 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_shop_details.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_shop_details_info_text.tres" type="DynamicFont" id=2]
-[ext_resource path="res://game/gui/deiatl_eintrag.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
+var anzahl_zeigen =10
 var cur_showing
+onready var eintage =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\")
+const pre_eintrag = preload(\"res://game/gui/deiatl_eintrag.tscn\")
+
 func _ready():
-	visible =false
-	print(\"details\")
-	print(owner)
-	print(owner.owner)
-	print(owner.owner.owner)
-	
+	visible =false	
 	for sp_item in self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_children():
 		sp_item.connect(\"show_details\",self,\"show_details_received\")
 	
 	
 	#self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_child(0).connect(\"show_details\",self,\"test\")                               
 	#$Shop_item.connect(\"show_details\", self, \"show_details_received\")
-func _on_Button_pressed():
+func _on_Button_pressed(): # x buton (hide)
 	visible =false
 
 
 func show_details_received(Shop_ID):
-	cur_showing=Shop_ID
+	for child in eintage.get_children():
+		child.queue_free()
+	cur_showing=Shop_ID #cur_showingwird auserhalb dieser fuktion zum kaufen benöting
+	#cur_showing=self #DELET AFTER TESTING##############################################################################################!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	
+	var key = Array(cur_showing.base_values.keys())
+	var val = Array(cur_showing.base_values.values())
+	for i in cur_showing.base_values.size():
+		print(i)
+		var add = pre_eintrag.instance()
+		add.get_node(\"txt\").text=key[i]
+		add.get_node(\"NR\").text=str(val[i])
+		eintage.add_child(add)
+	
 	visible =true
 	
 	
 	get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Label\").text = str(Shop_ID) #get_name(id)
 	var liste =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\")
 	#liste.get_child(1).get_node(
-	
+	_on_MarginContainer_draw()
 	
 	
 func _on_Kaufen_pressed():
@@ -48,22 +58,12 @@ func _on_Kaufen_pressed():
 	spawn.position.y = cur_spieler.get_node(\"Camera2D\").position.y
 	cur_spieler.get_node(\"Units\").add_child(spawn)
 	pass # Replace with function body.
-"
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends ScrollContainer
-var anzahl_zeigen =10
 
 
 func _on_MarginContainer_draw():
-	#get select id
-
-	#load data from selected
-
-
-
-	if(get_node(\"VBoxContainer\").get_child_count()<anzahl_zeigen):
-		rect_min_size.y=20* get_node(\"VBoxContainer\").get_child_count()
+	pass
+	if(get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\").get_child_count()<anzahl_zeigen):
+		rect_min_size.y=20* get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\").get_child_count()
 	else:
 		rect_min_size.y=anzahl_zeigen*20
 	rect_size =rect_min_size
@@ -71,30 +71,30 @@ func _on_MarginContainer_draw():
 "
 
 [node name="MarginContainer" type="MarginContainer"]
-margin_right = 173.0
+margin_right = 119.0
 margin_bottom = 156.0
 script = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 173.0
+margin_right = 119.0
 margin_bottom = 156.0
 color = Color( 0.156863, 0.156863, 0.254902, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 173.0
+margin_right = 119.0
 margin_bottom = 156.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
 [node name="top" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 173.0
+margin_right = 119.0
 margin_bottom = 3.0
 rect_min_size = Vector2( 0, 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 3.0
-margin_right = 173.0
+margin_right = 119.0
 margin_bottom = 153.0
 size_flags_vertical = 7
 custom_constants/separation = 0
@@ -160,7 +160,6 @@ margin_bottom = 90.0
 rect_min_size = Vector2( 0, 90 )
 size_flags_horizontal = 3
 scroll_horizontal_enabled = false
-script = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 margin_right = 95.0
@@ -168,10 +167,6 @@ margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 2
-
-[node name="Entry 13" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_right = 95.0
-margin_bottom = 90.0
 
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 108.0
@@ -208,9 +203,9 @@ rect_min_size = Vector2( 3, 0 )
 
 [node name="low" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 153.0
-margin_right = 173.0
+margin_right = 119.0
 margin_bottom = 156.0
 rect_min_size = Vector2( 0, 3 )
-[connection signal="draw" from="." to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer" method="_on_MarginContainer_draw"]
+[connection signal="draw" from="." to="." method="_on_MarginContainer_draw"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons/Kaufen" to="." method="_on_Kaufen_pressed"]
