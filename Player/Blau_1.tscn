@@ -1,73 +1,145 @@
 [gd_scene load_steps=8 format=2]
 
+
+
 [ext_resource path="res://Player/Skript/Blau_1.gd" type="Script" id=1]
+
 [ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=2]
+
 [ext_resource path="res://Player/Skript/Abschuss.gd" type="Script" id=3]
+
 [ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=4]
 
+
+
 [sub_resource type="RectangleShape2D" id=1]
+
 extents = Vector2( 84, 124 )
 
+
+
 [sub_resource type="Animation" id=2]
+
 tracks/0/type = "value"
+
 tracks/0/path = NodePath(".:frame")
+
 tracks/0/interp = 1
+
 tracks/0/loop_wrap = true
+
 tracks/0/imported = false
+
 tracks/0/enabled = true
+
 tracks/0/keys = {
+
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6 ),
+
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+
 "update": 1,
+
 "values": [ 1, 2, 3, 4, 5, 6 ]
+
 }
 
+
+
 [sub_resource type="RectangleShape2D" id=3]
+
 extents = Vector2( 105.592, 10 )
 
+
+
 [node name="Blau_1" type="KinematicBody2D"]
+
 position = Vector2( 88.6177, 54.8973 )
+
 script = ExtResource( 1 )
+
+
 
 [node name="Rumpf" type="Sprite" parent="."]
+
 position = Vector2( 28.5987, 0.802521 )
+
 rotation = 1.5708
+
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 position = Vector2( 27.2492, 2.77592 )
+
 shape = SubResource( 1 )
 
+
+
 [node name="Waffe" type="KinematicBody2D" parent="."]
+
 position = Vector2( -38.2953, 2.64449 )
+
 rotation = 1.5708
+
 script = ExtResource( 1 )
 
+
+
 [node name="Waffe" type="Sprite" parent="Waffe"]
+
 position = Vector2( -1.22339, -57.2144 )
+
 texture = ExtResource( 2 )
 
+
+
 [node name="Abschuss" type="Node2D" parent="Waffe"]
+
 position = Vector2( -1.79321, -163.657 )
+
 script = ExtResource( 3 )
+
+
 
 [node name="Timer" type="Timer" parent="Waffe/Abschuss"]
 
+
+
 [node name="Sprite" type="Sprite" parent="Waffe/Abschuss"]
+
 position = Vector2( 1.09118, -16.4475 )
+
 scale = Vector2( 1, 0.971935 )
+
 texture = ExtResource( 4 )
+
 vframes = 3
+
 hframes = 3
+
 frame = 7
 
+
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Waffe/Abschuss/Sprite"]
+
 anims/Abschuss = SubResource( 2 )
 
+
+
 [node name="Area2D" type="Area2D" parent="Waffe"]
+
 position = Vector2( 21.5847, -51.5248 )
 
+
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Waffe/Area2D"]
+
 position = Vector2( -22.6404, -8.5809 )
+
 rotation = -1.5708
+
 shape = SubResource( 3 )
+
 [connection signal="timeout" from="Waffe/Abschuss/Timer" to="Waffe/Abschuss" method="_on_Timer_timeout"]
