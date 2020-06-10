@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://units/pre_unit.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var base_values = {
+	\"Preis\":120,
+	\"Leben\":10,
+	\"Angriff\":1,
+	\"Ausweichen\":10,
+	\"Reichweite\": 7,
+	\"Bewegungsrate\":8
+}
+"
+
+[node name="medic" instance=ExtResource( 1 )]
+script = SubResource( 1 )
