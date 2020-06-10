@@ -14,7 +14,7 @@ var geld_anderung=10
 
 #reddy
 func _ready():
-	cam = get_parent().get_parent().get_parent().get_child(0)
+	cam = get_parent().get_parent().get_parent().get_node("Camera2D")
 	#cam
 	get_tree().get_root().connect("size_changed", self, "update_ofset")
 	px_hoehe = 6400.0
@@ -152,4 +152,4 @@ func r_updateborders():
 
 func jetzt_dran(): #reagiert sobald ein spieler dran ist
 	geld += geld_anderung
-	cam = get_parent().get_parent().get_parent().get_child(0)
+	cam = get_parent().get_parent().get_parent().get_node("Camera2D")

@@ -17,6 +17,8 @@ visible = false
 
 [node name="SP1" type="Node" parent="Spieler"]
 
+[node name="Units" type="Node" parent="Spieler/SP1"]
+
 [node name="Camera2D" type="Camera2D" parent="Spieler/SP1"]
 position = Vector2( 640, 364 )
 current = true
@@ -45,9 +47,9 @@ anchor_bottom = 1.0
 [node name="GUI" parent="Spieler/SP1/CL/Control" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
 
-[node name="Units" type="Node" parent="Spieler/SP1"]
-
 [node name="SP2" type="Node" parent="Spieler"]
+
+[node name="Units" type="Node" parent="Spieler/SP2"]
 
 [node name="Camera2D" type="Camera2D" parent="Spieler/SP2"]
 position = Vector2( 640, 364 )
@@ -76,5 +78,3 @@ anchor_bottom = 1.0
 
 [node name="GUI" parent="Spieler/SP2/CL/Control" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
-
-[node name="Units" type="Node" parent="Spieler/SP2"]
