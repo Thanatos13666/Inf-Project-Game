@@ -18,6 +18,7 @@ func _process(delta):
 		schuss_objekt = schuss.instance()
 		schuss_objekt.position = (get_global_position())
 		schuss_objekt.rotate((PI/180)*(get_parent().r+27))
+		schuss_objekt.set_schaden(get_parent().get_parent().get_schaden())
 		get_tree().get_root().add_child(schuss_objekt)
 		$Node2D/Sprite/AnimationPlayer.play("Abschuss")
 

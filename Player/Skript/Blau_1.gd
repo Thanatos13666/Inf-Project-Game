@@ -3,8 +3,8 @@ extends KinematicBody2D
 
 
 export (int) var speed = 200
-var leben = 1
-var schaden = 1
+var leben = 3
+var schaden = 2
 
 var target = Vector2()
 var velocity = Vector2()
@@ -34,5 +34,5 @@ func get_schaden():
 
 func check_leben():
 
-	if leben == 0:
+	if leben <= 0:
 		queue_free()

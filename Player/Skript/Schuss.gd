@@ -21,10 +21,13 @@ func check_tank():
 
 	for body in area.get_overlapping_bodies():
 		if body.has_method("treffer") and body.leben > 0:
-				$Sprite/AnimationPlayer.play("Explosion")
+			while i < schaden:
 				body.treffer()
-				queue_free()
+				i = i + 1
+			$Sprite/AnimationPlayer.play("Explosion")
+			queue_free()
 
-func set_schaden(var sch):
+
+func set_schaden(var sch): 
+
 	schaden = sch
-
