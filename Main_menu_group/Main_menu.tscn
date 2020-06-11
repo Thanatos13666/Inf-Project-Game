@@ -21,6 +21,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
 [node name="MC" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -107,15 +116,6 @@ margin_left = 582.0
 margin_right = 1160.0
 margin_bottom = 516.0
 size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="MC/Menue/centerrow/MarginContainer"]
-margin_right = 578.0
-margin_bottom = 516.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 2
 
 [node name="Fade_effekt" parent="." instance=ExtResource( 8 )]
 visible = false
