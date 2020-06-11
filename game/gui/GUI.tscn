@@ -217,7 +217,6 @@ margin_bottom = 594.0
 rect_min_size = Vector2( 10, 0 )
 
 [node name="deatil group" type="VBoxContainer" parent="VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer"]
-editor/display_folded = true
 margin_left = 138.0
 margin_right = 257.0
 margin_bottom = 594.0
