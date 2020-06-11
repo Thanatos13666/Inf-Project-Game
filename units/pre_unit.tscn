@@ -5,10 +5,10 @@
 [ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=3]
 [ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 125.059, 85.556 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 105.592, 10 )
 
 [node name="pre_unit" type="Node2D"]
@@ -39,7 +39,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pre_unit"]
 position = Vector2( 27.2492, 2.77592 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Waffe" type="KinematicBody2D" parent="pre_unit"]
 position = Vector2( -38.2953, 2.64449 )
@@ -63,7 +63,7 @@ hframes = 3
 frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pre_unit/Waffe/Abschuss/Sprite"]
-anims/Abschuss = SubResource( 3 )
+anims/Abschuss = SubResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="pre_unit/Waffe"]
 position = Vector2( 21.5847, -51.5248 )
@@ -71,5 +71,16 @@ position = Vector2( 21.5847, -51.5248 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="pre_unit/Waffe/Area2D"]
 position = Vector2( -22.6404, -8.5809 )
 rotation = -1.5708
-shape = SubResource( 4 )
+shape = SubResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+visible = false
+margin_left = -4.0
+margin_top = -23.0
+margin_right = 240.0
+margin_bottom = 138.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="pre_unit/Waffe/Abschuss/Timer" to="pre_unit/Waffe/Abschuss" method="_on_Timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

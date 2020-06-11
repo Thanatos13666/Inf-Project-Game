@@ -45,13 +45,13 @@ func getDmg(dmg):
 		die();
 	pass
 
-func move():
-	
-	pass
-
 func attac():
 	
 	pass
+
+#functions in parentcript-------------------------------------------------------
+#move()
+#attac()
 "
 
 [node name="tank" instance=ExtResource( 1 )]
