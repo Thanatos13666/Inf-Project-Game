@@ -1,0 +1,40 @@
+[gd_scene format=2]
+
+[node name="Entry" type="HBoxContainer"]
+margin_right = 186.0
+margin_bottom = 14.0
+
+[node name="Atribut" type="Label" parent="."]
+margin_right = 95.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Atribut"
+valign = 1
+
+[node name="vSeparator" type="VSeparator" parent="."]
+margin_left = 99.0
+margin_right = 103.0
+margin_bottom = 14.0
+
+[node name="Curent" type="Label" parent="."]
+margin_left = 107.0
+margin_right = 148.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 41, 0 )
+text = "Aktuel"
+align = 2
+valign = 1
+
+[node name="vSeparator2" type="VSeparator" parent="."]
+margin_left = 152.0
+margin_right = 156.0
+margin_bottom = 14.0
+
+[node name="Max" type="Label" parent="."]
+margin_left = 160.0
+margin_right = 186.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 26, 0 )
+text = "Max"
+align = 2
+valign = 1
