@@ -93,7 +93,7 @@ func cam_activ():
 	var lim_rit = px_hoehe  -(get_viewport_rect().size.x*zoom_s)/2
 	
 
-	#print(get_node("Camera2D").position)
+	
 	#check ob wir außerhalb sein werden 
 	if(lim_top>futur_pos.y):
 		change.y=lim_top-_p.y  
@@ -103,7 +103,7 @@ func cam_activ():
 		change.y=lim_low -_p.y  
 	if(lim_rit<futur_pos.x):
 		change.x=lim_rit-_p.x  
-	#print(change)
+
 	
 	
 	#limit right
@@ -111,21 +111,6 @@ func cam_activ():
 	cam.limit_right =64* owner.get_node("MAP").get_child(0).breite
 	cam.limit_top=0
 	cam.limit_bottom  =64* owner.get_node("MAP").get_child(0).hoehe
-	
-	
-
-	#print(str(position.y) +" + "+str(change.y)+ " > "+ str(zoom_s))
-
-#	if (abs(change.x)>200):
-#		change.x = 0
-#	if (abs(change.y)>200):
-#		change.y = 0
-
-
-	#berechnen
-	#if (get_parent().rect_scale.x != zoom_s):
-		#get_parent().rect_scale.x = zoom_s
-		#get_parent().rect_scale.y = zoom_s
 	
 	cam.zoom.x =zoom_s
 	cam.zoom.y =zoom_s
@@ -146,7 +131,7 @@ func r_updateborders():
 	var mapdata =owner.get_node("MAP").get_child(0)
 	px_hoehe = mapdata.hoehe*64
 	px_breite = mapdata.breite*64
-	print(owner.get_node("MAP").get_child(0))
+
 
 #spieler skripts --------------------------------------------------------------------------------------------------------------------------------------
 

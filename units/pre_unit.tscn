@@ -35,7 +35,7 @@ position = Vector2( 88.6177, 54.8973 )
 [node name="Rumpf" type="Sprite" parent="pre_unit"]
 position = Vector2( 28.5987, 0.802521 )
 rotation = 1.5708
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pre_unit"]
 position = Vector2( 27.2492, 2.77592 )
@@ -47,7 +47,7 @@ rotation = 1.5708
 
 [node name="Waffe" type="Sprite" parent="pre_unit/Waffe"]
 position = Vector2( -1.22339, -57.2144 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 
 [node name="Abschuss" type="Node2D" parent="pre_unit/Waffe"]
 position = Vector2( -1.79321, -163.657 )
@@ -57,7 +57,7 @@ position = Vector2( -1.79321, -163.657 )
 [node name="Sprite" type="Sprite" parent="pre_unit/Waffe/Abschuss"]
 position = Vector2( 1.09118, -16.4475 )
 scale = Vector2( 1, 0.971935 )
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 vframes = 3
 hframes = 3
 frame = 1
