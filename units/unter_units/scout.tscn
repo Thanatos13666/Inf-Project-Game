@@ -30,6 +30,17 @@ func dash():
 	if curr_values.Bewegungsrate == base_values.Bewegungsrate:
 		curr_values.Bewegungsrate += dashBonus;
 	pass
+
+#base functions-----------------------------------------------------------------
+func getDmg(dmg):
+	curr_values.Leben -= dmg;
+	if curr_values.Leben <= 0:
+		die();
+	pass
+
+func die():
+	self.queue_free();
+	pass
 "
 
 [node name="scout" instance=ExtResource( 1 )]
