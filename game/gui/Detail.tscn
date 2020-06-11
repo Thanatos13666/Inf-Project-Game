@@ -1,123 +1,132 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_shop_details.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_shop_details_info_text.tres" type="DynamicFont" id=2]
-[ext_resource path="res://game/gui/deiatl_eintrag.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
+#fordetails calulation
+var anzahl_zeigen =15
+var hight_entry
+var base_hight
+#fürs anhängen von einträgen
 var cur_showing
+onready var eintage =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\")
+const pre_eintrag = preload(\"res://game/gui/deiatl_eintrag.tscn\")
+
 func _ready():
-	visible =false
-	print(\"details\")
-	print(owner)
-	print(owner.owner)
-	print(owner.owner.owner)
-	
+	visible =false	
 	for sp_item in self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_children():
 		sp_item.connect(\"show_details\",self,\"show_details_received\")
-	
+	base_hight=rect_size.y
+	hight_entry=pre_eintrag.instance().rect_size.y
 	
 	#self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_child(0).connect(\"show_details\",self,\"test\")                               
 	#$Shop_item.connect(\"show_details\", self, \"show_details_received\")
-func _on_Button_pressed():
+func _on_Button_pressed(): # x buton (hide)
 	visible =false
 
 
 func show_details_received(Shop_ID):
-	cur_showing=Shop_ID
+	#abfangen ob user auf den gleichen butt drückt
+	if cur_showing!=Shop_ID:
+		cur_showing=Shop_ID 
+		load_data()
+#load_data() wird nur hier genutzt und der einziege zweck ist lesbarkeit + ein tab in jeder zeile wegzulassen
+func load_data():
+#alle eintäge löschen
+	for child in eintage.get_children():
+		child.free()
+#keys und base values in arrays ´packen
+	var key = Array(cur_showing.base_values.keys())
+	var val = Array(cur_showing.base_values.values())
+# für jedeneitrag ein neues obj erstellen und anhängen
+	for i in cur_showing.base_values.size():
+		var add = pre_eintrag.instance()
+		add.get_node(\"txt\").text=key[i]
+		add.get_node(\"NR\").text=str(val[i])
+		eintage.add_child(add)
+#größe des details obj aktualiesieren 
+	if(eintage.get_child_count()<anzahl_zeigen):
+		rect_min_size.y=(hight_entry* eintage.get_child_count())+base_hight
+	else:
+		rect_min_size.y=(anzahl_zeigen*hight_entry)+base_hight
+#Namen setzen
+	get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Label\").text = cur_showing.name
+#anzeigen
 	visible =true
-	
-	
-	get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Label\").text = str(Shop_ID) #get_name(id)
-	var liste =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer\")
-	#liste.get_child(1).get_node(
-	
-	
 	
 func _on_Kaufen_pressed():
 	var cur_spieler
 	if owner.owner.player1:
-		cur_spieler = owner.owner.sp1
+		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
 	else:
-		cur_spieler = owner.owner.sp2
+		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
 #	if cur_spieler.geld <= cur_showing.atribute[0][1]:
 #		return
 	var spawn =load(cur_showing.filename).instance()
-	spawn.position.x = 100#rect_position.x
-	spawn.position.y = 100# rect_position.y
-	cur_spieler.get_parent().get_parent().get_node(\"Units\").add_child(spawn)
+	spawn.position.x = cur_spieler.get_node(\"Camera2D\").position.x
+	spawn.position.y = cur_spieler.get_node(\"Camera2D\").position.y
+	cur_spieler.get_node(\"Units\").add_child(spawn)
 	pass # Replace with function body.
-"
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends ScrollContainer
-var anzahl_zeigen =10
-
-
-func _on_MarginContainer_draw():
-	#get select id
-
-	#load data from selected
 
 
 
-	if(get_node(\"VBoxContainer\").get_child_count()<anzahl_zeigen):
-		rect_min_size.y=20* get_node(\"VBoxContainer\").get_child_count()
-	else:
-		rect_min_size.y=anzahl_zeigen*20
-	rect_size =rect_min_size
-	pass # Replace with function body.
+
+
 "
 
 [node name="MarginContainer" type="MarginContainer"]
-margin_right = 173.0
-margin_bottom = 156.0
+margin_right = 119.0
+margin_bottom = 66.0
 script = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 173.0
-margin_bottom = 156.0
+margin_right = 119.0
+margin_bottom = 66.0
 color = Color( 0.156863, 0.156863, 0.254902, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 173.0
-margin_bottom = 156.0
+margin_right = 119.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
 [node name="top" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 173.0
+margin_right = 119.0
 margin_bottom = 3.0
 rect_min_size = Vector2( 0, 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 3.0
-margin_right = 173.0
-margin_bottom = 153.0
-size_flags_vertical = 7
+margin_right = 119.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 0
 
 [node name="left" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 3.0
-margin_bottom = 150.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 3, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 3.0
 margin_right = 116.0
-margin_bottom = 150.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 margin_right = 113.0
-margin_bottom = 150.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_right = 113.0
-margin_bottom = 150.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -144,45 +153,36 @@ text = "X"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 32.0
 margin_right = 113.0
-margin_bottom = 122.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_right = 5.0
-margin_bottom = 90.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 9.0
 margin_right = 104.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 0, 90 )
 size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
-script = SubResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 margin_right = 95.0
-margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 2
 
-[node name="Entry 13" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_right = 95.0
-margin_bottom = 90.0
-
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 108.0
 margin_right = 113.0
-margin_bottom = 90.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="butons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 126.0
+margin_top = 36.0
 margin_right = 113.0
-margin_bottom = 150.0
+margin_bottom = 60.0
 rect_pivot_offset = Vector2( -321.093, -212.404 )
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
@@ -203,14 +203,13 @@ text = "Kaufen"
 [node name="right" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 116.0
 margin_right = 119.0
-margin_bottom = 150.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 3, 0 )
 
 [node name="low" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 153.0
-margin_right = 173.0
-margin_bottom = 156.0
+margin_top = 63.0
+margin_right = 119.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 0, 3 )
-[connection signal="draw" from="." to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer" method="_on_MarginContainer_draw"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons/Kaufen" to="." method="_on_Kaufen_pressed"]

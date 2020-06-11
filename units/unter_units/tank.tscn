@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://units/pre_unit.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+#variables----------------------------------------------------------------------
+var base_values = {
+	\"Preis\":120,
+	\"Leben\":15,
+	\"Angriff\":5,
+	\"Ausweichen\":10,
+	\"Reichweite\": 10,
+	\"Bewegungsrate\":5,
+	\"Schild\":0
+}
+
+var curr_values = {
+	\"Leben\":base_values.Leben,
+	\"Angriff\":base_values.Angriff,
+	\"Ausweichen\":base_values.Ausweichen,
+	\"Reichweite\":base_values.Reichweite,
+	\"Bewegungsrate\":base_values.Bewegungsrate,
+	\"Schild\":base_values.Schild
+}
+
+var shieldBonus = 10;
+
+#functions----------------------------------------------------------------------
+func schildHochfahren():
+	if curr_values.Schild < 1:
+		curr_values.Schild += shieldBonus;
+	pass
+
+func getDmg(dmg):
+	var dmgDiff = curr_values.Schild-dmg;
+	if dmgDiff < 0:
+		curr_values.Leben + dmgDiff;
+	elif dmgDiff > 0 :
+		curr_values.Schild = dmgDiff;
+	
+	if curr_values.Leben <= 0:
+		die();
+	pass
+
+func die():
+	pass
+"
+
+[node name="tank" instance=ExtResource( 1 )]
+script = SubResource( 1 )
