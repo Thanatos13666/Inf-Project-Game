@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://units/Skript/Waffe.gd" type="Script" id=1]
-[ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=2]
-[ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=3]
-[ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=4]
+[ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=1]
+[ext_resource path="res://units/pre_unit.gd" type="Script" id=2]
+[ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=3]
+[ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 125.059, 85.556 )
+extents = Vector2( 119.784, 76.7655 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -27,7 +27,7 @@ extents = Vector2( 105.592, 10 )
 
 [node name="pre_unit" type="Node2D"]
 position = Vector2( 396.7, 225.096 )
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="pre_unit" type="KinematicBody2D" parent="."]
 position = Vector2( 88.6177, 54.8973 )
@@ -35,7 +35,7 @@ position = Vector2( 88.6177, 54.8973 )
 [node name="Rumpf" type="Sprite" parent="pre_unit"]
 position = Vector2( 28.5987, 0.802521 )
 rotation = 1.5708
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pre_unit"]
 position = Vector2( 27.2492, 2.77592 )
@@ -47,7 +47,7 @@ rotation = 1.5708
 
 [node name="Waffe" type="Sprite" parent="pre_unit/Waffe"]
 position = Vector2( -1.22339, -57.2144 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 
 [node name="Abschuss" type="Node2D" parent="pre_unit/Waffe"]
 position = Vector2( -1.79321, -163.657 )
@@ -57,7 +57,7 @@ position = Vector2( -1.79321, -163.657 )
 [node name="Sprite" type="Sprite" parent="pre_unit/Waffe/Abschuss"]
 position = Vector2( 1.09118, -16.4475 )
 scale = Vector2( 1, 0.971935 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 vframes = 3
 hframes = 3
 frame = 1
@@ -72,4 +72,15 @@ position = Vector2( 21.5847, -51.5248 )
 position = Vector2( -22.6404, -8.5809 )
 rotation = -1.5708
 shape = SubResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = -4.0
+margin_top = -23.0
+margin_right = 240.0
+margin_bottom = 138.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="pre_unit/Waffe/Abschuss/Timer" to="pre_unit/Waffe/Abschuss" method="_on_Timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

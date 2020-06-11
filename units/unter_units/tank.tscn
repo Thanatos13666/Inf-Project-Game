@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://units/pre_unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assetz/units/blau/tank/Hull.png" type="Texture" id=2]
+[ext_resource path="res://assetz/units/blau/tank/Gun.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends \"res://units/pre_script.gd\"
+script/source = "extends \"res://units/pre_unit.gd\"
 
 #variables----------------------------------------------------------------------
 var base_values = {
@@ -45,14 +47,20 @@ func getDmg(dmg):
 		die();
 	pass
 
-func move():
+func attack():
 	
 	pass
 
-func attac():
-	
-	pass
+#functions in parentcript-------------------------------------------------------
+#move()
+#attac()
 "
 
 [node name="tank" instance=ExtResource( 1 )]
 script = SubResource( 1 )
+
+[node name="Rumpf" parent="pre_unit" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Waffe" parent="pre_unit/Waffe" index="0"]
+texture = ExtResource( 3 )

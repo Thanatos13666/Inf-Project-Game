@@ -1,11 +1,12 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Skript/Blau_1.gd" type="Script" id=1]
-[ext_resource path="res://Player/Assets/blau_1/Hull_01.png" type="Texture" id=2]
+[ext_resource path="res://assetz/units/blau_1/Hull_01.png" type="Texture" id=2]
 [ext_resource path="res://Player/Skript/Waffe.gd" type="Script" id=3]
-[ext_resource path="res://Player/Assets/blau_1/Gun_01.png" type="Texture" id=4]
+[ext_resource path="res://assetz/units/blau_1/Gun_01.png" type="Texture" id=4]
 [ext_resource path="res://Player/Skript/Abschuss.gd" type="Script" id=5]
 [ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=6]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 84, 125.133 )

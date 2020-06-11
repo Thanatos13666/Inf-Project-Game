@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://units/pre_unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assetz/units/blau/medic/Hull.png" type="Texture" id=2]
+[ext_resource path="res://assetz/units/blau/medic/Gun.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
+script/source = "extends \"res://units/pre_unit.gd\"
 
 var base_values = {
 	\"Preis\":120,
@@ -13,7 +15,21 @@ var base_values = {
 	\"Reichweite\": 7,
 	\"Bewegungsrate\":8
 }
+
+var curr_values = {
+	\"Leben\":base_values.Leben,
+	\"Angriff\":base_values.Angriff,
+	\"Ausweichen\":base_values.Ausweichen,
+	\"Reichweite\":base_values.Reichweite,
+	\"Bewegungsrate\":base_values.Bewegungsrate,
+}
 "
 
 [node name="medic" instance=ExtResource( 1 )]
 script = SubResource( 1 )
+
+[node name="Rumpf" parent="pre_unit" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Waffe" parent="pre_unit/Waffe" index="0"]
+texture = ExtResource( 3 )
