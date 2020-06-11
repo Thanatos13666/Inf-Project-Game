@@ -11,7 +11,16 @@ func move():
 	
 	pass
 
+#testvariable-------------------------------------------------------------------
+var select_possible = false
+#-------------------------------------------------------------------------------
 
 func _on_Button_pressed():
-	emit_signal("is_selected",self)
+	if select_possible:
+		emit_signal("is_selected",self)
+		print("select possible")
+	else:
+		print("select")
 	pass
+
+var has_attacked = false;

@@ -6,7 +6,7 @@
 [ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 125.059, 85.556 )
+extents = Vector2( 119.784, 76.7655 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -74,11 +74,11 @@ rotation = -1.5708
 shape = SubResource( 3 )
 
 [node name="Button" type="Button" parent="."]
-visible = false
 margin_left = -4.0
 margin_top = -23.0
 margin_right = 240.0
 margin_bottom = 138.0
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
