@@ -15,7 +15,6 @@ signal sp2_dran
 signal updateborders #dammit bestimmter code nach dieser -r
 
 func _ready():
-	print(self)
 	sp1 =get_node("Spieler/SP1/CL/Control/GUI")
 	sp2 = get_node("Spieler/SP2/CL/Control/GUI")
 	var sp1_info = sp1.get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
@@ -51,10 +50,7 @@ func _ready():
 	connect("updateborders",sp1,"r_updateborders")
 	connect("updateborders",sp2,"r_updateborders")
 	emit_signal("updateborders")
-	print("game.self:")
-	print(self)
-	print(self.get_child(0))
-	print(self.get_child(0).get_child(0))
+	
 	
 	
 	#get map
@@ -67,11 +63,11 @@ func _ready():
 	
 	pass
 	
-func recive_data():
+func recive_data():#ich habe vergesen zu was das gehört 
 	print("recived")
 	
 func next_player():
-	print("wechsele spiler")
+	
 	player1 = !player1
 	if (player1):
 		get_node("Spieler/SP1/CL/Control").visible = true
