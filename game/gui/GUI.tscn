@@ -299,4 +299,3 @@ rect_min_size = Vector2( 0, 10 )
 [node name="ESC-menu" parent="." instance=ExtResource( 9 )]
 [connection signal="pressed" from="VBoxContainer2/top bar/Button" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" to="." method="_on_Button_toggled"]
-[connection signal="toggled" from="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" to="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" method="_on_Button_toggled"]
