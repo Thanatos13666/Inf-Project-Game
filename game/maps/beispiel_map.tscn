@@ -197,4 +197,4 @@ tile_data = PoolIntArray( -65484, 3, 0, -65483, 3, 1, -65482, 3, 1, -65481, 3, 1
 [node name="base" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 format = 1
-tile_data = PoolIntArray( 262149, 9, 0, 5832794, 9, 0 )
+tile_data = PoolIntArray( 262149, 9, 0, 5832794, 10, 0 )

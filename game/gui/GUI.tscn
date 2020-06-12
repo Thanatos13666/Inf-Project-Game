@@ -1,24 +1,25 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://assetz/topbar/backgroung.png" type="Texture" id=1]
-[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assetz/topbar/topbar_monney.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assetz/topbar/topbar_monney_change.tscn" type="PackedScene" id=4]
-[ext_resource path="res://game/gui/Detail.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game/gui/Shop_Button.gd" type="Script" id=6]
-[ext_resource path="res://game/gui/unit_info.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game/gui/ESC-Menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/gui/CAM_skript.gd" type="Script" id=1]
+[ext_resource path="res://assetz/topbar/backgroung.png" type="Texture" id=2]
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assetz/topbar/topbar_monney.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assetz/topbar/topbar_monney_change.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/gui/Detail.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/gui/Shop_Button.gd" type="Script" id=7]
+[ext_resource path="res://game/gui/unit_info.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/gui/ESC-Menu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 10
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="Theme" id=2]
 "Button/icons/claras button" = null
 
 [sub_resource type="DynamicFont" id=3]
 size = 19
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends VBoxContainer
@@ -40,13 +41,14 @@ func _ready():
 
 [sub_resource type="DynamicFont" id=5]
 size = 15
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,7 +75,7 @@ margin_right = 1024.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="v align" type="VBoxContainer" parent="VBoxContainer2/top bar/top_groop"]
 margin_right = 1024.0
@@ -118,11 +120,11 @@ custom_fonts/font = SubResource( 1 )
 text = "PLAYER NAME"
 valign = 1
 
-[node name="money" parent="VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer" instance=ExtResource( 3 )]
+[node name="money" parent="VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer" instance=ExtResource( 4 )]
 margin_left = 136.0
 margin_right = 186.0
 
-[node name="change" parent="VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer" instance=ExtResource( 4 )]
+[node name="change" parent="VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer" instance=ExtResource( 5 )]
 margin_left = 190.0
 margin_right = 240.0
 
@@ -214,7 +216,7 @@ margin_left = 138.0
 margin_right = 257.0
 margin_bottom = 594.0
 
-[node name="Control" parent="VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/deatil group" instance=ExtResource( 5 )]
+[node name="Control" parent="VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/deatil group" instance=ExtResource( 6 )]
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2/margin hold/shop+ buton"]
 margin_top = 598.0
@@ -242,7 +244,7 @@ custom_fonts/font = SubResource( 5 )
 toggle_mode = true
 pressed = true
 text = "P"
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="push left" type="MarginContainer" parent="VBoxContainer2/margin hold/shop+ buton/buton group"]
 margin_left = 124.0
@@ -270,7 +272,7 @@ margin_bottom = 246.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="unit_info" parent="VBoxContainer2/margin hold/cur_unit" instance=ExtResource( 7 )]
+[node name="unit_info" parent="VBoxContainer2/margin hold/cur_unit" instance=ExtResource( 8 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -294,7 +296,7 @@ margin_right = 1280.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 0, 10 )
 
-[node name="ESC-menu" parent="." instance=ExtResource( 8 )]
+[node name="ESC-menu" parent="." instance=ExtResource( 9 )]
 [connection signal="pressed" from="VBoxContainer2/top bar/Button" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" to="." method="_on_Button_toggled"]
 [connection signal="toggled" from="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" to="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" method="_on_Button_toggled"]
