@@ -1,8 +1,8 @@
-[gd_resource type="TileSet" load_steps=2 format=2]
+[gd_resource type="TileSet" load_steps=4 format=2]
 
-[ext_resource path="res://game/main_tile_set.png" type="Texture" id=1]
-
-
+[ext_resource path="res://assetz/map/main_tile_set.png" type="Texture" id=1]
+[ext_resource path="res://assetz/map/Rot Base.png" type="Texture" id=2]
+[ext_resource path="res://assetz/map/Blau Base.png" type="Texture" id=3]
 
 [resource]
 0/name = "tileset v2.png 0"
@@ -170,3 +170,23 @@
 8/navigation_offset = Vector2( 0, 0 )
 8/shapes = [  ]
 8/z_index = 0
+9/name = "Blau Base"
+9/texture = ExtResource( 3 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 384, 384 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shapes = [  ]
+9/z_index = 0
+10/name = "Rot Base"
+10/texture = ExtResource( 2 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 384, 384 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shapes = [  ]
+10/z_index = 0

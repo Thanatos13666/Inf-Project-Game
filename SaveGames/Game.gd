@@ -2,6 +2,7 @@ extends Node
 var player1 =false
 var sp1
 var sp2
+var select_possible
 signal sp1_dran
 signal sp2_dran
 #prelod all maps 

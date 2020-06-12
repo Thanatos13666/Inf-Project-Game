@@ -138,3 +138,6 @@ func r_updateborders():
 func jetzt_dran(): #reagiert sobald ein spieler dran ist
 	geld += geld_anderung
 	cam = get_parent().get_parent().get_parent().get_node("Camera2D")
+
+func _on_Button_pressed():
+	owner.next_player()
