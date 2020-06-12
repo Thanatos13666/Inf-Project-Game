@@ -15,14 +15,14 @@ onready var eintage =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBox
 const pre_eintrag = preload(\"res://game/gui/deiatl_eintrag.tscn\")
 
 func _ready():
-	visible =false	
+	visible =false
+
+	
 	for sp_item in self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_children():
 		sp_item.connect(\"show_details\",self,\"show_details_received\")
 	base_hight=rect_size.y
 	hight_entry=pre_eintrag.instance().rect_size.y
 	
-	#self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_child(0).connect(\"show_details\",self,\"test\")                               
-	#$Shop_item.connect(\"show_details\", self, \"show_details_received\")
 func _on_Button_pressed(): # x buton (hide)
 	visible =false
 
@@ -84,12 +84,12 @@ script = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 119.0
-margin_bottom = 78.0
+margin_bottom = 66.0
 color = Color( 0.156863, 0.156863, 0.254902, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 119.0
-margin_bottom = 78.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
@@ -102,32 +102,32 @@ rect_min_size = Vector2( 0, 3 )
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 3.0
 margin_right = 119.0
-margin_bottom = 75.0
+margin_bottom = 63.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
 [node name="left" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_right = 3.0
-margin_bottom = 72.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 3, 0 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 3.0
 margin_right = 116.0
-margin_bottom = 72.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 margin_right = 113.0
-margin_bottom = 72.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 margin_right = 113.0
-margin_bottom = 72.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -154,26 +154,23 @@ text = "X"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 32.0
 margin_right = 113.0
-margin_bottom = 44.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_right = 5.0
-margin_bottom = 12.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 9.0
 margin_right = 104.0
-margin_bottom = 12.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 margin_right = 95.0
-margin_bottom = 12.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 2
@@ -181,14 +178,13 @@ custom_constants/separation = 2
 [node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 108.0
 margin_right = 113.0
-margin_bottom = 12.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="butons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 48.0
+editor/display_folded = true
+margin_top = 36.0
 margin_right = 113.0
-margin_bottom = 72.0
-rect_pivot_offset = Vector2( -321.093, -212.404 )
+margin_bottom = 60.0
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
 margin_right = 43.0
@@ -208,13 +204,13 @@ text = "Kaufen"
 [node name="right" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 116.0
 margin_right = 119.0
-margin_bottom = 72.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 3, 0 )
 
 [node name="low" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 75.0
+margin_top = 63.0
 margin_right = 119.0
-margin_bottom = 78.0
+margin_bottom = 66.0
 rect_min_size = Vector2( 0, 3 )
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/top line/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons/Kaufen" to="." method="_on_Kaufen_pressed"]
