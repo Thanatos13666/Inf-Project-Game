@@ -20,5 +20,5 @@ position = Vector2( 408.38, 399.208 )
 [node name="sniper" parent="." instance=ExtResource( 4 )]
 position = Vector2( 129.471, 216.306 )
 
-[node name="medic" parent="sniper" instance=ExtResource( 5 )]
-position = Vector2( 539.105, -6.97115 )
+[node name="medic" parent="." instance=ExtResource( 5 )]
+position = Vector2( 668.576, 209.335 )

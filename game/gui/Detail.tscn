@@ -58,17 +58,21 @@ func load_data():
 	
 func _on_Kaufen_pressed():
 	var cur_spieler
+	var playing
 	if owner.owner.player1:
-		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
+		playing = \"SP1\"
 	else:
-		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
+		playing = \"SP2\"
+	
+	cur_spieler = owner.owner.get_node(\"Spieler\").get_node(str(playing))
 #	if cur_spieler.geld <= cur_showing.atribute[0][1]:
 #		return
 	var spawn =load(cur_showing.filename).instance()
 	spawn.position.x = cur_spieler.get_node(\"Camera2D\").position.x
 	spawn.position.y = cur_spieler.get_node(\"Camera2D\").position.y
-	#spawn.connect(\"is_selected\",owner.unit_info,\"show_cur_unit\")
-	cur_spieler.get_node(\"Units\").add_child(spawn)
+	spawn.connect(\"is_selected\",owner.unit_info,\"show_cur_unit\")
+	spawn.gamenode = owner.owner
+	owner.owner.get_node(\"units_in_game\").get_node(playing).add_child(spawn)
 	pass # Replace with function body.
 
 

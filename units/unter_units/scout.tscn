@@ -8,22 +8,8 @@
 script/source = "extends \"res://units/pre_unit.gd\"
 
 #variables----------------------------------------------------------------------
-var base_values = {
-	\"Preis\":120,
-	\"Leben\":10,
-	\"Angriff\":10,
-	\"Ausweichen\":40,
-	\"Reichweite\": 5,
-	\"Bewegungsrate\":8
-}
-
-var curr_values = {
-	\"Leben\":base_values.Leben,
-	\"Angriff\":base_values.Angriff,
-	\"Ausweichen\":base_values.Ausweichen,
-	\"Reichweite\":base_values.Reichweite,
-	\"Bewegungsrate\":base_values.Bewegungsrate,
-}
+func _ready():
+	pass
 
 var dashBonus = 4;
 
@@ -34,16 +20,10 @@ func dash():
 	pass
 
 #base functions-----------------------------------------------------------------
-func getDmg(dmg):
-	curr_values.Leben -= dmg;
-	if curr_values.Leben <= 0:
-		die();
-	pass
-
-func die():
-	self.queue_free();
-	pass
-"
+	
+#functions in parentcript-------------------------------------------------------
+#die()
+#getDmg(dmg)"
 
 [node name="scout" instance=ExtResource( 1 )]
 script = SubResource( 1 )
@@ -53,6 +33,3 @@ texture = ExtResource( 2 )
 
 [node name="Waffe" parent="pre_unit/Waffe" index="0"]
 texture = ExtResource( 3 )
-
-[node name="Button" parent="." index="1"]
-flat = false

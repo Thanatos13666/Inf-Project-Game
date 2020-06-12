@@ -16,8 +16,6 @@ visible = false
 
 [node name="SP1" type="Node" parent="Spieler"]
 
-[node name="Units" type="Node" parent="Spieler/SP1"]
-
 [node name="Camera2D" type="Camera2D" parent="Spieler/SP1"]
 position = Vector2( 640, 364 )
 current = true
@@ -37,7 +35,7 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="CL" type="CanvasLayer" parent="Spieler/SP1"]
-layer = 100
+layer = 0
 
 [node name="Control" type="Control" parent="Spieler/SP1/CL"]
 anchor_right = 1.0
@@ -46,8 +44,6 @@ anchor_bottom = 1.0
 [node name="GUI" parent="Spieler/SP1/CL/Control" instance=ExtResource( 3 )]
 
 [node name="SP2" type="Node" parent="Spieler"]
-
-[node name="Units" type="Node" parent="Spieler/SP2"]
 
 [node name="Camera2D" type="Camera2D" parent="Spieler/SP2"]
 position = Vector2( 640, 364 )
@@ -68,10 +64,16 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="CL" type="CanvasLayer" parent="Spieler/SP2"]
-layer = 100
+layer = 0
 
 [node name="Control" type="Control" parent="Spieler/SP2/CL"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="GUI" parent="Spieler/SP2/CL/Control" instance=ExtResource( 3 )]
+
+[node name="units_in_game" type="Node" parent="."]
+
+[node name="SP1" type="Node" parent="units_in_game"]
+
+[node name="SP2" type="Node" parent="units_in_game"]

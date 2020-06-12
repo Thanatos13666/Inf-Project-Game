@@ -11,6 +11,8 @@ var px_breite =0
 #spieler varieabeln
 var geld=100
 var geld_anderung=10
+#links
+onready var unit_info=get_node("VBoxContainer2/margin hold/cur_unit/unit_info")
 
 #reddy
 func _ready():
