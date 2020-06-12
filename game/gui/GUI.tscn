@@ -28,7 +28,7 @@ const sp_item = preload(\"res://game/gui/Shop_item.tscn\")
 
 
 func _ready():
-
+	
 	var shop_item
 	for unit in owner.owner.get_node(\"units\").get_children():
 		shop_item = sp_item.instance()
@@ -255,19 +255,19 @@ size_flags_horizontal = 3
 
 [node name="midel" type="MarginContainer" parent="VBoxContainer2/margin hold"]
 margin_left = 275.0
-margin_right = 1060.0
+margin_right = 1012.0
 margin_bottom = 650.0
 rect_min_size = Vector2( 10, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="cur_unit" type="VBoxContainer" parent="VBoxContainer2/margin hold"]
-margin_left = 1064.0
+margin_left = 1016.0
 margin_right = 1266.0
 margin_bottom = 650.0
 
 [node name="top margin" type="MarginContainer" parent="VBoxContainer2/margin hold/cur_unit"]
-margin_right = 202.0
+margin_right = 250.0
 margin_bottom = 246.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -279,7 +279,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 250.0
-margin_right = 202.0
+margin_right = 250.0
 margin_bottom = 650.0
 size_flags_horizontal = 1
 size_flags_vertical = 0
@@ -299,4 +299,3 @@ rect_min_size = Vector2( 0, 10 )
 [node name="ESC-menu" parent="." instance=ExtResource( 9 )]
 [connection signal="pressed" from="VBoxContainer2/top bar/Button" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" to="." method="_on_Button_toggled"]
-[connection signal="toggled" from="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" to="VBoxContainer2/margin hold/shop+ buton/buton group/list/Button" method="_on_Button_toggled"]

@@ -15,14 +15,14 @@ onready var eintage =get_node(\"VBoxContainer/HBoxContainer/MarginContainer/HBox
 const pre_eintrag = preload(\"res://game/gui/deiatl_eintrag.tscn\")
 
 func _ready():
-	visible =false	
+	visible =false
+
+	
 	for sp_item in self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_children():
 		sp_item.connect(\"show_details\",self,\"show_details_received\")
 	base_hight=rect_size.y
 	hight_entry=pre_eintrag.instance().rect_size.y
 	
-	#self.owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer\").get_child(0).connect(\"show_details\",self,\"test\")                               
-	#$Shop_item.connect(\"show_details\", self, \"show_details_received\")
 func _on_Button_pressed(): # x buton (hide)
 	visible =false
 
@@ -58,17 +58,21 @@ func load_data():
 	
 func _on_Kaufen_pressed():
 	var cur_spieler
+	var playing
 	if owner.owner.player1:
-		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
+		playing = \"SP1\"
 	else:
-		cur_spieler = owner.owner.get_node(\"Spieler/SP1\")
+		playing = \"SP2\"
+	
+	cur_spieler = owner.owner.get_node(\"Spieler\").get_node(str(playing))
 #	if cur_spieler.geld <= cur_showing.atribute[0][1]:
 #		return
 	var spawn =load(cur_showing.filename).instance()
 	spawn.position.x = cur_spieler.get_node(\"Camera2D\").position.x
 	spawn.position.y = cur_spieler.get_node(\"Camera2D\").position.y
-	#spawn.connect(\"is_selected\",owner.unit_info,\"show_cur_unit\")
-	cur_spieler.get_node(\"Units\").add_child(spawn)
+	spawn.connect(\"is_selected\",owner.unit_info,\"show_cur_unit\")
+	spawn.gamenode = owner.owner
+	owner.owner.get_node(\"units_in_game\").get_node(playing).add_child(spawn)
 	pass # Replace with function body.
 
 
@@ -181,10 +185,10 @@ margin_right = 113.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="butons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+editor/display_folded = true
 margin_top = 36.0
 margin_right = 113.0
 margin_bottom = 60.0
-rect_pivot_offset = Vector2( -321.093, -212.404 )
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/butons"]
 margin_right = 43.0

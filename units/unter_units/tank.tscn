@@ -8,29 +8,18 @@
 script/source = "extends \"res://units/pre_unit.gd\"
 
 #variables----------------------------------------------------------------------
-var base_values = {
-	\"Preis\":120,
-	\"Leben\":15,
-	\"Angriff\":5,
-	\"Ausweichen\":10,
-	\"Reichweite\": 10,
-	\"Bewegungsrate\":5,
-	\"Schild\":0
-}
+func _ready():
+	base_values[\"Schild\"]=10
+	curr_values [\"Schild\"]=0
+	
 
-var curr_values = {
-	\"Leben\":base_values.Leben,
-	\"Angriff\":base_values.Angriff,
-	\"Ausweichen\":base_values.Ausweichen,
-	\"Reichweite\":base_values.Reichweite,
-	\"Bewegungsrate\":base_values.Bewegungsrate,
-	\"Schild\":base_values.Schild
-}
 
-var shieldBonus = 10;
+var shieldBonus = 5;
 
 #functions----------------------------------------------------------------------
 func schildHochfahren():
+	#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	#IDEE: je öfter die funktion genutzt wird des so seniger efectif ist sie bis der panzer irgentwo auflät eg an einer (der) basis
 	if curr_values.Schild < 1:
 		curr_values.Schild += shieldBonus;
 	pass
@@ -45,10 +34,6 @@ func getDmg(dmg):
 	
 	if curr_values.Leben <= 0:
 		die();
-	pass
-
-func attack():
-	
 	pass
 
 #functions in parentcript-------------------------------------------------------

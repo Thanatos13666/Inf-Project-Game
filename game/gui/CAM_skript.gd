@@ -11,6 +11,8 @@ var px_breite =0
 #spieler varieabeln
 var geld=100
 var geld_anderung=10
+#links
+onready var unit_info=get_node("VBoxContainer2/margin hold/cur_unit/unit_info")
 
 #reddy
 func _ready():
@@ -141,3 +143,7 @@ func jetzt_dran(): #reagiert sobald ein spieler dran ist
 
 func _on_Button_pressed():
 	owner.next_player()
+
+
+func _on_Button_toggled(button_pressed):
+	get_node("VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con").visible = button_pressed

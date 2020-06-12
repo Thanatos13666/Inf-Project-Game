@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/gui/unit_info_entry.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gui/aktion_butt.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 resource_name = "Tab_control"
@@ -8,30 +9,52 @@ script/source = "extends MarginContainer
 onready var info_liste =get_node(\"TabContainer/Info/SC/VBC\")
 onready var button_liste =get_node(\"TabContainer/Aktionen/SC/VBC\")
 const entry = preload(\"res://game/gui/unit_info_entry.tscn\")
-#const button = preload(\"\")
-
+const button = preload(\"res://game/gui/aktion_butt.tscn\")
+const debug = preload(\"res://units/unter_units/scout.tscn\")
 
 func _ready():
 	$TabContainer.current_tab = 1
+	var lade =debug.instance()
+	show_cur_unit(lade)
 	
 
 func show_cur_unit(unit):#wird über signal aufgerufen unit = objekID
+#laden von _values
+
 #alle eintäge löschen
+	print(unit)
 	for child in info_liste.get_children():
 		child.free()
 #keys und base values in arrays packen
-	var key = Array(unit.base_values.keys())
-	var val = Array(unit.base_values.values())
+	var key = Array(unit.curr_values.keys())
 	var cur = Array(unit.curr_values.values())
+#Überschrif
+	var add =entry.instance()
+	add.get_node(\"Max\").align = Label.ALIGN_CENTER
+	info_liste.add_child(add)
 # für jedeneitrag ein neues obj erstellen und anhängen
-	for i in unit.base_values.size():
-		var add = entry.instance()
-		add.get_node(\"Atribut\").text = key[i]
-		add.get_node(\"Curent\").text = cur[i]
-		add.get_node(\"Max\").text = val[i]
+	for i in unit.curr_values.size():
+		add = entry.instance()
+		add.get_node(\"Atribut\").text = str(key[i])
+		add.get_node(\"Curent\").text = str(cur[i])
+		add.get_node(\"Max\").text = str(unit.base_values[key[i]])
 		info_liste.add_child(add)
 
-
+#laden von butons
+#alle eintäge löschen
+	print(unit)
+	for child in button_liste.get_children():
+		child.free()
+#keys und base values in arrays packen
+	key = Array(unit.func_list.keys())
+	cur = Array(unit.func_list.values())
+# für jedeneitrag ein neues obj erstellen und anhängen
+	for i in unit.func_list.size():
+		add =button.instance()
+		add.text = key[i]
+		add.execute = cur[i]
+		button_liste.add_child(add)
+		
 func _on_TabContainer_tab_selected(tab):
 	if tab == 2:
 		visible = false"
@@ -41,17 +64,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -202.0
+margin_left = -250.0
 margin_top = -400.0
-rect_min_size = Vector2( 202, 400 )
+rect_min_size = Vector2( 250, 400 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource( 1 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
-margin_right = 202.0
+margin_right = 250.0
 margin_bottom = 400.0
-tab_align = 0
 
 [node name="Info" type="Tabs" parent="TabContainer"]
 anchor_right = 1.0
@@ -72,11 +94,12 @@ margin_bottom = -28.0
 scroll_horizontal_enabled = false
 
 [node name="VBC" type="VBoxContainer" parent="TabContainer/Info/SC"]
-margin_right = 186.0
+margin_right = 234.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 
 [node name="Entry" parent="TabContainer/Info/SC/VBC" instance=ExtResource( 1 )]
+margin_right = 234.0
 
 [node name="Aktionen" type="Tabs" parent="TabContainer"]
 visible = false
@@ -95,56 +118,12 @@ anchor_bottom = 1.0
 scroll_horizontal_enabled = false
 
 [node name="VBC" type="VBoxContainer" parent="TabContainer/Aktionen/SC"]
-margin_right = 194.0
-margin_bottom = 224.0
+margin_right = 242.0
+margin_bottom = 364.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="TabContainer/Aktionen/SC/VBC"]
-margin_right = 194.0
-margin_bottom = 31.0
-text = "bbbbbbbbbbbb
-"
-
-[node name="Label2" type="Label" parent="TabContainer/Aktionen/SC/VBC"]
-margin_top = 35.0
-margin_right = 194.0
-margin_bottom = 66.0
-text = "bbbbbbbbbbbb
-"
-
-[node name="Label3" type="Label" parent="TabContainer/Aktionen/SC/VBC"]
-margin_top = 70.0
-margin_right = 194.0
-margin_bottom = 101.0
-text = "bbbbbbbbbbbb
-"
-
-[node name="Label4" type="Label" parent="TabContainer/Aktionen/SC/VBC"]
-margin_top = 105.0
-margin_right = 194.0
-margin_bottom = 136.0
-text = "bbbbbbbbbbbb
-"
-
-[node name="Label5" type="Label" parent="TabContainer/Aktionen/SC/VBC"]
-margin_top = 140.0
-margin_right = 194.0
-margin_bottom = 171.0
-text = "bbbbbbbbbbbb
-"
-
-[node name="Label6" type="Label" parent="TabContainer/Aktionen/SC/VBC"]
-margin_top = 175.0
-margin_right = 194.0
-margin_bottom = 206.0
-text = "bbbbbbbbbbbb
-"
-
-[node name="Label7" type="Label" parent="TabContainer/Aktionen/SC/VBC"]
-margin_top = 210.0
-margin_right = 194.0
-margin_bottom = 224.0
-text = "bbbbbbbbbbbb"
+[node name="Button" parent="TabContainer/Aktionen/SC/VBC" instance=ExtResource( 2 )]
 
 [node name="X" type="Tabs" parent="TabContainer"]
 visible = false
