@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hull_01.png-730a48c724958ebb91f84a2ac937602c.stex"
+path="res://.import/Hull_01.png-e166237b5922f11137b4b249c1e2a992.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assetz/units/Hull_01.png"
-dest_files=[ "res://.import/Hull_01.png-730a48c724958ebb91f84a2ac937602c.stex" ]
+source_file="res://units/Hull_01.png"
+dest_files=[ "res://.import/Hull_01.png-e166237b5922f11137b4b249c1e2a992.stex" ]
 
 [params]
 

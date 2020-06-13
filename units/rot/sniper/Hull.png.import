@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hull.png-8b1bb4ee08f34f589b2a27770809b5eb.stex"
+path="res://.import/Hull.png-096a453a37c5fa6f5d52f76d0e36690f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assetz/units/rot/sniper/Hull.png"
-dest_files=[ "res://.import/Hull.png-8b1bb4ee08f34f589b2a27770809b5eb.stex" ]
+source_file="res://units/rot/sniper/Hull.png"
+dest_files=[ "res://.import/Hull.png-096a453a37c5fa6f5d52f76d0e36690f.stex" ]
 
 [params]
 

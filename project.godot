@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Savegame",
+"language": "GDScript",
+"path": "res://game/speichern_class.gd"
+} ]
 _global_script_class_icons={
-
+"Savegame": ""
 }
 
 [application]
@@ -18,10 +23,12 @@ _global_script_class_icons={
 config/name="Inf-Project-Game"
 run/main_scene="res://Main_menu_group/Main_menu.tscn"
 config/icon="res://icon.png"
+config/version="0.5.0"
 
 [autoload]
 
 global="*res://game/global.gd"
+speichern="*res://game/speichern.gd"
 
 [display]
 

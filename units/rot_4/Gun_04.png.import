@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Gun_04.png-660d29a2d6d36a8f04b33087cabe0868.stex"
+path="res://.import/Gun_04.png-113872807ab9c3b9cd80fbf732251bad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assetz/units/rot_4/Gun_04.png"
-dest_files=[ "res://.import/Gun_04.png-660d29a2d6d36a8f04b33087cabe0868.stex" ]
+source_file="res://units/rot_4/Gun_04.png"
+dest_files=[ "res://.import/Gun_04.png-113872807ab9c3b9cd80fbf732251bad.stex" ]
 
 [params]
 

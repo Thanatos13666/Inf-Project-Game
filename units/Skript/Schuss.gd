@@ -27,6 +27,6 @@ func check_tank():
 				queue_free()
 
 
-func set_schaden(var sch): 
+func set_schaden(var sch):
 
 	schaden = sch

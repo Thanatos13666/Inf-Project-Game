@@ -3,6 +3,7 @@
 [ext_resource path="res://SaveGames/Game.gd" type="Script" id=1]
 [ext_resource path="res://units/units.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/gui/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SaveGames/save_units.gd" type="Script" id=4]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -76,4 +77,7 @@ anchor_bottom = 1.0
 
 [node name="SP1" type="Node" parent="units_in_game"]
 
+script = ExtResource( 4 )
+
 [node name="SP2" type="Node" parent="units_in_game"]
+script = ExtResource( 4 )

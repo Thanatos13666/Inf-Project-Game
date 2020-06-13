@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hull.png-61dfa3a49580c4fb753491f1fbea5836.stex"
+path="res://.import/Hull.png-0e18d671169e555318db5a3576627bae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assetz/units/blau/scout/Hull.png"
-dest_files=[ "res://.import/Hull.png-61dfa3a49580c4fb753491f1fbea5836.stex" ]
+source_file="res://units/blau/scout/Hull.png"
+dest_files=[ "res://.import/Hull.png-0e18d671169e555318db5a3576627bae.stex" ]
 
 [params]
 

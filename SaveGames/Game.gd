@@ -16,7 +16,6 @@ signal sp2_dran
 signal updateborders #dammit bestimmter code nach dieser -r
 
 func _ready():
-	print(self)
 	sp1 =get_node("Spieler/SP1/CL/Control/GUI")
 	sp2 = get_node("Spieler/SP2/CL/Control/GUI")
 	var sp1_info = sp1.get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
@@ -45,9 +44,11 @@ func _ready():
 #		print("An error occurred when trying to access the path.")
 #		get_tree().quit()
 #	var Mappath = path+file_name
+					
 	var Mappath = "res://game/maps/"+ global.Map + ".tscn"
-	var Map = load(Mappath)
-	get_node("MAP").add_child(Map.instance())
+	var ladekarte = load(Mappath)
+	var test = ladekarte.instance()
+	get_node("MAP").add_child(test)
 	
 	connect("updateborders",sp1,"r_updateborders")
 	connect("updateborders",sp2,"r_updateborders")
