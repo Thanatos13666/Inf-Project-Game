@@ -28,7 +28,7 @@ const sp_item = preload(\"res://game/gui/Shop_item.tscn\")
 
 
 func _ready():
-	
+
 	var shop_item
 	for unit in owner.owner.get_node(\"units\").get_children():
 		shop_item = sp_item.instance()
@@ -66,32 +66,32 @@ margin_bottom = 50.0
 
 [node name="top_groop" type="MarginContainer" parent="VBoxContainer2/top bar"]
 editor/display_folded = true
-margin_right = 1024.0
+margin_right = 1027.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 
 [node name="hintergrund" type="TextureRect" parent="VBoxContainer2/top bar/top_groop"]
-margin_right = 1024.0
+margin_right = 1027.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
 
 [node name="v align" type="VBoxContainer" parent="VBoxContainer2/top bar/top_groop"]
-margin_right = 1024.0
+margin_right = 1027.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
 [node name="top_margin" type="MarginContainer" parent="VBoxContainer2/top bar/top_groop/v align"]
-margin_right = 1024.0
+margin_right = 1027.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 0, 10 )
 
 [node name="h align" type="HBoxContainer" parent="VBoxContainer2/top bar/top_groop/v align"]
 margin_top = 10.0
-margin_right = 1024.0
+margin_right = 1027.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
@@ -103,12 +103,12 @@ rect_min_size = Vector2( 10, 0 )
 
 [node name="icon container" type="MarginContainer" parent="VBoxContainer2/top bar/top_groop/v align/h align"]
 margin_left = 10.0
-margin_right = 1024.0
+margin_right = 1027.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/top bar/top_groop/v align/h align/icon container"]
-margin_right = 1014.0
+margin_right = 1017.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 
@@ -129,14 +129,13 @@ margin_left = 190.0
 margin_right = 240.0
 
 [node name="Button" type="Button" parent="VBoxContainer2/top bar"]
-margin_left = 1028.0
+margin_left = 1031.0
 margin_right = 1266.0
 margin_bottom = 50.0
 size_flags_vertical = 3
 theme = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
-
-text = "Zug Beenden"
+text = "Zug beenden"
 
 [node name="right margin2" type="MarginContainer" parent="VBoxContainer2/top bar"]
 margin_left = 1270.0

@@ -12,7 +12,6 @@ var target = Vector2()
 #var path = PoolVector2Array()
 #var node = load("res://game/maps/beispiel_map.tscn").instance()
 #-------------------------------------------------------------------------------
-
 signal is_selected(selber)
 
 #variables----------------------------------------------------------------------
@@ -119,7 +118,7 @@ func move(var distance):
 # move() mit Pathfinding
 # node.get_nav(start, ziel) bzw. get_simple_path() gibt nichts zurück
 # --------------------------------------------------------------------
-
+#
 #	if Input.is_action_pressed('ui_remaus'):
 #		ziel = get_global_mouse_position()
 #
@@ -140,7 +139,7 @@ func move(var distance):
 #		distance -= sub_ziel
 #		start = path[0]
 #		path.remove(0)
-
+#
 #-------------------------------------------------------------------------------------------------------
 
 # move() ohne Pathfinding

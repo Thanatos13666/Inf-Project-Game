@@ -74,10 +74,11 @@ rotation = -1.5708
 shape = SubResource( 3 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = -4.0
-margin_top = -23.0
-margin_right = 240.0
-margin_bottom = 138.0
+visible = false
+margin_left = -4.59875
+margin_top = -22.2101
+margin_right = 239.401
+margin_bottom = 142.79
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
