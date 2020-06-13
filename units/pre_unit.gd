@@ -1,7 +1,17 @@
-extends Node2D
+extends KinematicBody2D
 var gamenode # wird besetzt sobbals obj erzeugt wird
 var can_attack = true;
 
+# Variablen für move()
+var velocity = Vector2()
+var target = Vector2()
+
+#var start = position
+#var ziel
+#var bewegung = Vector2()
+#var path = PoolVector2Array()
+#var node = load("res://game/maps/beispiel_map.tscn").instance()
+#-------------------------------------------------------------------------------
 signal is_selected(selber)
 
 #variables----------------------------------------------------------------------
@@ -44,6 +54,11 @@ var func_list = {
 	"test_B":funcref(self,"test_B")
 }
 
+
+func _physics_process(delta):
+	move(curr_values.Bewegungsrate * delta)
+
+
 #test funktionen
 func test_A():
 	print("test_A")
@@ -58,9 +73,52 @@ func die():
 	self.queue_free();
 	pass
 
-func move():
-	
-	pass
+func move(var distance):
+	if gamenode == null:
+		return
+
+#-------------------------------------------------------------------------------------------------------
+# move() mit Pathfinding
+# node.get_nav(start, ziel) bzw. get_simple_path() gibt nichts zurück
+# --------------------------------------------------------------------
+#
+#	if Input.is_action_pressed('ui_remaus'):
+#		ziel = get_global_mouse_position()
+#
+#	if ziel == null:
+#		return
+#
+#	path = node.get_nav(start, ziel)
+#
+#	for i in range(path.size()):
+#		var sub_ziel = start.distance_to(path[0])
+#		if distance <= sub_ziel and distance >= 0:
+#			look_at(path[0])
+#			move_and_slide((path[0] - position).normalized() * (curr_values.Bewegungsrate*25))
+#			break
+#		elif distance < 0:
+#			position = path[0]
+#			break
+#		distance -= sub_ziel
+#		start = path[0]
+#		path.remove(0)
+#
+#-------------------------------------------------------------------------------------------------------
+
+# move() ohne Pathfinding
+
+	if Input.is_action_pressed('ui_remaus'):
+		target = get_global_mouse_position()
+
+	if target == Vector2(0,0):
+		return
+
+	rotation = velocity.angle()
+	velocity = (target - position).normalized() * (curr_values.Bewegungsrate*25)
+	if (target - position).length() > 5:
+		move_and_slide(velocity)
+
+
 
 func attack():
 	
