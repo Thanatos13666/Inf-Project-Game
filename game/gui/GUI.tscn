@@ -135,6 +135,7 @@ margin_bottom = 50.0
 size_flags_vertical = 3
 theme = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
+
 text = "Zug Beenden"
 
 [node name="right margin2" type="MarginContainer" parent="VBoxContainer2/top bar"]

@@ -44,9 +44,11 @@ func _ready():
 #		print("An error occurred when trying to access the path.")
 #		get_tree().quit()
 #	var Mappath = path+file_name
+					
 	var Mappath = "res://game/maps/"+ global.Map + ".tscn"
-	var Map = load(Mappath)
-	get_node("MAP").add_child(Map.instance())
+	var ladekarte = load(Mappath)
+	var test = ladekarte.instance()
+	get_node("MAP").add_child(test)
 	
 	connect("updateborders",sp1,"r_updateborders")
 	connect("updateborders",sp2,"r_updateborders")

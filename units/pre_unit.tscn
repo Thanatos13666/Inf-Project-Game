@@ -6,7 +6,7 @@
 [ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 119.784, 76.7655 )
+extents = Vector2( 119.784, 81.1353 )
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -25,20 +25,20 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 105.592, 10 )
 
-[node name="pre_unit" type="Node2D"]
-position = Vector2( 396.7, 225.096 )
+[node name="pre_unit" type="KinematicBody2D"]
+position = Vector2( 481.122, 262.218 )
 script = ExtResource( 1 )
 
 [node name="pre_unit" type="KinematicBody2D" parent="."]
 position = Vector2( 88.6177, 54.8973 )
 
 [node name="Rumpf" type="Sprite" parent="pre_unit"]
-position = Vector2( 28.5987, 0.802521 )
+position = Vector2( -79.1741, -52.4851 )
 rotation = 1.5708
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pre_unit"]
-position = Vector2( 27.2492, 2.77592 )
+position = Vector2( -83.5173, -53.5054 )
 shape = SubResource( 1 )
 
 [node name="Waffe" type="KinematicBody2D" parent="pre_unit"]
@@ -46,16 +46,16 @@ position = Vector2( -38.2953, 2.64449 )
 rotation = 1.5708
 
 [node name="Waffe" type="Sprite" parent="pre_unit/Waffe"]
-position = Vector2( -1.22339, -57.2144 )
+position = Vector2( -56.9056, 44.5713 )
 texture = ExtResource( 3 )
 
 [node name="Abschuss" type="Node2D" parent="pre_unit/Waffe"]
-position = Vector2( -1.79321, -163.657 )
+position = Vector2( -55.0807, -90.6108 )
 
 [node name="Timer" type="Timer" parent="pre_unit/Waffe/Abschuss"]
 
 [node name="Sprite" type="Sprite" parent="pre_unit/Waffe/Abschuss"]
-position = Vector2( 1.09118, -16.4475 )
+position = Vector2( -0.654486, 14.9698 )
 scale = Vector2( 1, 0.971935 )
 texture = ExtResource( 4 )
 vframes = 3
@@ -69,7 +69,7 @@ anims/Abschuss = SubResource( 2 )
 position = Vector2( 21.5847, -51.5248 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="pre_unit/Waffe/Area2D"]
-position = Vector2( -22.6404, -8.5809 )
+position = Vector2( -77.7239, 95.001 )
 rotation = -1.5708
 shape = SubResource( 3 )
 
