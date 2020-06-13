@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://units/pre_unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assetz/units/blau/tank/Hull.png" type="Texture" id=2]
+[ext_resource path="res://assetz/units/blau/tank/Gun.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://units/pre_unit.gd\"
+
+#variables----------------------------------------------------------------------
+func _ready():
+	base_values[\"Schild\"]=10
+	curr_values [\"Schild\"]=0
+	
+
+
+var shieldBonus = 5;
+
+#functions----------------------------------------------------------------------
+func schildHochfahren():
+	#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	#IDEE: je öfter die funktion genutzt wird des so seniger efectif ist sie bis der panzer irgentwo auflät eg an einer (der) basis
+	if curr_values.Schild < 1:
+		curr_values.Schild += shieldBonus;
+	pass
+
+#base functions-----------------------------------------------------------------
+func getDmg(dmg):
+	var dmgDiff = curr_values.Schild-dmg;
+	if dmgDiff < 0:
+		curr_values.Leben + dmgDiff;
+	elif dmgDiff > 0 :
+		curr_values.Schild = dmgDiff;
+	
+	if curr_values.Leben <= 0:
+		die();
+	pass
+
+#functions in parentcript-------------------------------------------------------
+#move()
+#attac()
+"
+
+[node name="tank" instance=ExtResource( 1 )]
+script = SubResource( 1 )
+
+[node name="Rumpf" parent="pre_unit" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Waffe" parent="pre_unit/Waffe" index="0"]
+texture = ExtResource( 3 )

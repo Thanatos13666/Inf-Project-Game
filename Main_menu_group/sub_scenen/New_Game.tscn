@@ -74,7 +74,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-editor/display_folded = true
 margin_right = 1280.0
 margin_bottom = 108.0
 
@@ -84,7 +83,7 @@ margin_bottom = 108.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 custom_fonts/font = ExtResource( 1 )
-text = "Neues Spiel Erstellen"
+text = "Neues Spiel erstellen"
 align = 1
 valign = 1
 
@@ -94,16 +93,16 @@ margin_right = 1280.0
 margin_bottom = 220.0
 
 [node name="Label2" type="Label" parent="VBoxContainer/Spielname"]
-margin_right = 528.0
+margin_right = 492.0
 margin_bottom = 108.0
 size_flags_vertical = 2
 custom_fonts/font = ExtResource( 1 )
-text = "Spiel Name:  "
+text = "Spielname:  "
 align = 1
 valign = 1
 
 [node name="GameName" type="LineEdit" parent="VBoxContainer/Spielname"]
-margin_left = 532.0
+margin_left = 496.0
 margin_right = 1280.0
 margin_bottom = 108.0
 size_flags_horizontal = 3
@@ -208,7 +207,7 @@ focus_next = NodePath("../start")
 focus_previous = NodePath("../../Chose mapp/OptionButton")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Abrechen"
+text = "Abbrechen"
 
 [node name="start" type="Button" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 642.0
@@ -221,6 +220,6 @@ focus_next = NodePath("../../HBoxContainer2/VBoxContainer/sp1_edit")
 focus_previous = NodePath("../abrechen")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Spiel Starten"
+text = "Spiel starten"
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/abrechen" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/start" to="." method="_on_start_pressed"]

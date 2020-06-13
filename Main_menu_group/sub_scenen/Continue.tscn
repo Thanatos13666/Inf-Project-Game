@@ -10,7 +10,7 @@ margin_right = 1168.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
 margin_right = 1056.0
-text = "temporärer platzhalter 
+text = "temporärer Platzhalter 
 für die Fortsetzen scene"
 
 [node name="Button" parent="CenterContainer/VBoxContainer" index="1"]

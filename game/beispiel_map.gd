@@ -5,6 +5,5 @@ export(int) var hoehe
 
 
 
-func _ready():
-	print("map:")
-	print(self)
+func get_nav(var start, var ziel):
+	return $Navigation2D.get_simple_path(start, ziel, true)
