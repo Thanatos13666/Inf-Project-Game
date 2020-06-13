@@ -15,7 +15,10 @@ func _ready():
 
 
 var shieldBonus = 5;
-
+#Speichern und Laden------------------------------------------------------------
+func speacial_save():
+	save_me.typ =\"tank\"
+	
 #functions----------------------------------------------------------------------
 func schildHochfahren():
 	#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -25,7 +28,9 @@ func schildHochfahren():
 	pass
 
 #base functions-----------------------------------------------------------------
-func getDmg(dmg):
+func getDmg():
+	var dmg=0
+	print(\"seacial get dmg\")
 	var dmgDiff = curr_values.Schild-dmg;
 	if dmgDiff < 0:
 		curr_values.Leben + dmgDiff;

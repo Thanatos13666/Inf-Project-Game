@@ -13,6 +13,10 @@ func _ready():
 
 var dashBonus = 4;
 
+#Speichern und Laden------------------------------------------------------------
+func speacial_save():
+	save_me.typ =\"scout\"
+	
 #functions----------------------------------------------------------------------
 func dash():
 	if curr_values.Bewegungsrate == base_values.Bewegungsrate:
