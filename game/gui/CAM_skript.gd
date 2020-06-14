@@ -1,5 +1,5 @@
 extends Control
-var cam
+
 #camera varieabeln
 var speed =40
 var zoom_speed = 0.07
@@ -11,18 +11,21 @@ var px_breite =0
 #spieler varieabeln
 var geld=100
 var geld_anderung=10
+var spieler_str
 #links
+onready var spawnpoint
 onready var unit_info=get_node("VBoxContainer2/margin hold/cur_unit/unit_info")
 onready var sp_info =get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
-
-
+onready var cam = get_parent().get_parent().get_parent().get_node("Camera2D")
+onready var shop =get_node("VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con/VBoxContainer")
 #reddy
 func _ready():
-	cam = get_parent().get_parent().get_parent().get_node("Camera2D")
+	
 	#cam
 	get_tree().get_root().connect("size_changed", self, "update_ofset")
 	px_hoehe = 6400.0
 	px_breite =6400.0
+
 	#spieler
 
 func _process(delta):

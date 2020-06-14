@@ -1,6 +1,6 @@
 extends Control
 func _ready():
-	for button in $MC/Menue/centerrow/LeftCon/Buttons.get_children():
+	for button in $MarginContainer/HBoxContainer/VBoxContainer/MC/Menue/centerrow/LeftCon/Buttons.get_children():
 		button.connect("pressed",self,"_on_Button_pressed",[button.scene_to_load])
 
 

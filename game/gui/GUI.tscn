@@ -27,16 +27,19 @@ script/source = "extends VBoxContainer
 const sp_item = preload(\"res://game/gui/Shop_item.tscn\")
 
 
-func _ready():
-
+func lade_shop():
+	var detail= owner.get_node(\"VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/deatil group/Control\")
 	var shop_item
 	for unit in owner.owner.get_node(\"units\").get_children():
+		var pfad = \"res://assetz/units/\"+owner.spieler_str+\"/\"+unit.name
 		shop_item = sp_item.instance()
 		shop_item.get_node(\"HBoxContainer/VBoxContainer/name\").text= unit.name
-		shop_item.get_node(\"HBoxContainer/VBoxContainer/rumpf\").texture =unit.get_node(\"pre_unit/Rumpf\").texture
-		shop_item.get_node(\"HBoxContainer/VBoxContainer/rumpf/gun\").texture=unit.get_node(\"pre_unit/Waffe/Waffe\").texture
+		shop_item.get_node(\"HBoxContainer/VBoxContainer/rumpf\").texture = load( pfad+\"/Hull.png\")
+		shop_item.get_node(\"HBoxContainer/VBoxContainer/rumpf/gun\").texture=load( pfad+\"/Gun.png\")
+		shop_item.connect(\"show_details\",detail,\"show_details_received\")
 		shop_item.Shop_ID = unit #über gist die Objekt id anden buton
 		add_child(shop_item)
+	
 "
 
 [sub_resource type="DynamicFont" id=5]

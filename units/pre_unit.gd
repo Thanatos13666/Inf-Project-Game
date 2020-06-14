@@ -8,6 +8,8 @@ var target = Vector2()
 var button_move = false
 var button_attack = false;
 
+var test_count =0
+
 #var start = position
 #var ziel
 #var bewegung = Vector2()
@@ -160,12 +162,10 @@ func move():
 	if target == Vector2(0,0):
 		return
 
-	$pre_unit.rotation = velocity.angle()
 	velocity = (target - $pre_unit.get_global_position()).normalized() * (curr_values.Bewegungsrate*25)
+	$pre_unit.rotation = velocity.angle()
 	if (target - $pre_unit.get_global_position()).length() > 5:
 		$pre_unit.move_and_slide(velocity)
-
-
 
 
 func attack():
