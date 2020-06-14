@@ -38,24 +38,36 @@ func _on_Button2_pressed():
 	
 func _on_start_pressed():
 	
-	
+	#Überprüfen das alle daten vorhanden sind
+	if get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer/sp1_edit\").text ==\"\":
+		$AcceptDialog.popup_centered_minsize()
+		return
+	if get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer2/sp2_edit\").text ==\"\":
+		$AcceptDialog.popup_centered_minsize()
+		return
+	if get_node(\"VBoxContainer/Spielname/GameName\").text + \".tres\" == \"\":
+		$AcceptDialog.popup_centered_minsize()
+		return
+	var file = File.new()
+	var path = speichern.SAVER_FOLDER+get_node(\"VBoxContainer/Spielname/GameName\").text + \".tres\"
+	if file.file_exists(path):
+		$AcceptDialog.dialog_text=\"Datei existiert bereits\"
+		$AcceptDialog.popup_centered_minsize()
+		return
 	
 	global.sp1Name  = get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer/sp1_edit\").text 
 	global.sp2Name = get_node(\"VBoxContainer/HBoxContainer2/VBoxContainer2/sp2_edit\").text
 	global.Map=dropdown.text
+	global.file_name=get_node(\"VBoxContainer/Spielname/GameName\").text + \".tres\"
 	#var neues_spiel_name  = \"res://SaveGames/USER/\"+get_node(\"VBoxContainer/Spielname/GameName\").text+\".tscn\"
 	
 	
-	#Überprüfen das alle daten vorhanden sind
+
 	
 	
-	#global.cur_game=neues_spiel_name
-	#var dir = Directory.new()
-	#dir.copy(\"res://SaveGames/Blank_game.tscn\",neues_spiel_name)
+	
 	get_tree().change_scene(\"res://SaveGames/Blank_game.tscn\")
-	#emit_signal(\"send_data\",sp1_Name,sp2_Name,dropdown.text)
-	#get_tree().change_scene('res://Main_menu_group/sub_scenen/New_Game.tscn')
-	#print(\"this gest executed\")
+
 	
 	
 "
@@ -221,5 +233,12 @@ focus_previous = NodePath("../abrechen")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Spiel starten"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+visible = true
+margin_right = 108.0
+margin_bottom = 58.0
+window_title = "Fehler!"
+dialog_text = "Alle Felder müssen text beinhalten"
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/abrechen" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer3/start" to="." method="_on_start_pressed"]

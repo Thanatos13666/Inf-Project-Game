@@ -1,17 +1,146 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Main_menu_group/sub_scenen/Pre_tmp_screnv2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=1]
 
-[node name="Continue" instance=ExtResource( 1 )]
+[sub_resource type="GDScript" id=1]
+resource_name = "main"
+script/source = "extends Control
 
-[node name="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 112.0
-margin_right = 1168.0
+onready var entry = preload(\"res://Main_menu_group/sub_scenen/speicherstnd.tscn\")
 
-[node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
-margin_right = 1056.0
-text = "temporärer Platzhalter 
-für die Fortsetzen scene"
+var cur_select
+var path =\"res://SaveGames/USER/\"
 
-[node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
-margin_right = 1056.0
+
+func _ready():
+	#lehre liste 
+	for i in $VBoxContainer/ScrollContainer/VBoxContainer.get_children():
+		i.queue_free()
+	
+	#lade wlche speicherstände es gibt
+	var file_name
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		file_name = dir.get_next()
+		while file_name != \"\":
+			if !dir.current_is_dir():#filtern von ordnern
+				var add = entry.instance()
+				add.get_node(\"MarginContainer/Label\").text = file_name.replace(\".tres\",\"\")
+				add.list = self
+				$VBoxContainer/ScrollContainer/VBoxContainer.add_child(add)
+			file_name = dir.get_next()
+	else:
+		print(\"An error occurred when trying to access the path.\")
+		get_tree().quit()
+
+
+
+func _on_Zurck_pressed():
+	get_tree().change_scene('res://Main_menu_group/Main_menu.tscn')
+	
+func _on_Lschen_pressed():
+	$\"bestätige_del\".dialog_text=\"Soll \"+cur_select+\" wirklich gelöscht werden\"
+	$\"bestätige_del\".popup_centered()
+
+func _on_besttige_del_confirmed():
+	var file_name = path+ cur_select +\".tres\"
+	var dir = Directory.new()
+	dir.remove(file_name)
+	_ready()
+
+func _on_Laden_pressed():
+	global.laden = true
+	global.filename =path+ cur_select +\".tres\"
+	global.laden(load(global.filename))
+	get_tree().change_scene(\"res://SaveGames/Blank_game.tscn\")
+	
+
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Spiel_laden" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 108.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+text = "Spiel Auswählen"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 112.0
+margin_right = 1280.0
+margin_bottom = 641.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 1280.0
+margin_bottom = 529.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 645.0
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="Zurück" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Zurück"
+
+[node name="Löschen" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 428.0
+margin_right = 852.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Löschen"
+
+[node name="Laden" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 856.0
+margin_right = 1280.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Laden"
+
+[node name="bestätige_del" type="ConfirmationDialog" parent="."]
+visible = true
+anchor_left = 0.367
+anchor_top = 0.417
+anchor_right = 0.612
+anchor_bottom = 0.514
+margin_left = 0.23999
+margin_top = -0.240021
+margin_right = -113.36
+margin_bottom = -0.0799866
+popup_exclusive = true
+window_title = "Bist du dir sicher?"
+dialog_text = "Soll _name_ wirklich PERANET gelöscht werden"
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Zurück" to="." method="_on_Zurck_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Löschen" to="." method="_on_Lschen_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Laden" to="." method="_on_Laden_pressed"]
+[connection signal="confirmed" from="bestätige_del" to="." method="_on_besttige_del_confirmed"]

@@ -10,8 +10,7 @@ script/source = "extends \"res://units/pre_unit.gd\"
 
 #Speichern und Laden------------------------------------------------------------
 func speacial_save():
-	save_me.typ =\"medic\"
-	
+	save_me.Typ =\"medic\"
 #variables----------------------------------------------------------------------
 
 #functions in parentcript-------------------------------------------------------"
