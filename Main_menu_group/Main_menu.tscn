@@ -25,8 +25,10 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_right = 1.0
+margin_left = -1.45547
+margin_top = 1.22772
+margin_right = -1.45544
+margin_bottom = 1.22772
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -63,11 +65,11 @@ size_flags_vertical = 3
 
 [node name="LeftCon" type="VBoxContainer" parent="MC/Menue/centerrow"]
 margin_right = 553.0
-margin_bottom = 500.0
+margin_bottom = 640.0
 
 [node name="Buttons" type="VBoxContainer" parent="MC/Menue/centerrow/LeftCon"]
 margin_right = 553.0
-margin_bottom = 457.0
+margin_bottom = 597.0
 size_flags_vertical = 3
 custom_constants/separation = 20
 alignment = 1
@@ -76,37 +78,37 @@ alignment = 1
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 553.0
-margin_bottom = 99.0
+margin_bottom = 134.0
 scene_to_load = "res://Main_menu_group/sub_scenen/New_Game.tscn"
 
 [node name="Continue" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 5 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 119.0
+margin_top = 154.0
 margin_right = 553.0
-margin_bottom = 218.0
+margin_bottom = 288.0
 scene_to_load = "res://Main_menu_group/sub_scenen/Continue.tscn"
 
 [node name="options" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 238.0
+margin_top = 308.0
 margin_right = 553.0
-margin_bottom = 337.0
+margin_bottom = 442.0
 scene_to_load = "res://Main_menu_group/sub_scenen/Options.tscn"
 
 [node name="Beenden" parent="MC/Menue/centerrow/LeftCon/Buttons" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 357.0
+margin_top = 462.0
 margin_right = 553.0
-margin_bottom = 457.0
+margin_bottom = 597.0
 scene_to_load = "END"
 
 [node name="Label" type="Label" parent="MC/Menue/centerrow/LeftCon"]
-margin_top = 461.0
+margin_top = 601.0
 margin_right = 553.0
-margin_bottom = 500.0
+margin_bottom = 640.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )

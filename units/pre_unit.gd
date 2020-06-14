@@ -5,8 +5,11 @@ var can_attack = true;
 # Variablen für move()
 var velocity = Vector2()
 var target = Vector2()
+var target_attack = Vector2()
 var button_move = false
-var button_attack = false;
+var button_attack = 0;
+var schuss = preload("res://units/Schuss.tscn")
+var schuss_objekt
 
 #var start = position
 #var ziel
@@ -20,7 +23,7 @@ signal is_selected(selber)
 var base_values = {
 	"Preis":120,
 	"Leben":10,
-	"Angriff":1,
+	"Angriff":5,
 	"Ausweichen":10,
 	"Reichweite": 7,
 	"Bewegungsrate":8
@@ -60,12 +63,15 @@ var func_list = {
 func _physics_process(delta):
 	move()
 
+func _process(delta):
+	attack();
 
 #test funktionen
 func test_A():
 	print("test_A")
 func Angriff():
-	button_attack = true
+	if button_attack == 0:
+		button_attack = 1
 
 func Bewegen():
 	button_move = true
@@ -160,8 +166,9 @@ func move():
 	if target == Vector2(0,0):
 		return
 
-	$pre_unit.rotation = velocity.angle()
+	
 	velocity = (target - $pre_unit.get_global_position()).normalized() * (curr_values.Bewegungsrate*25)
+	$pre_unit.rotation = velocity.angle()
 	if (target - $pre_unit.get_global_position()).length() > 5:
 		$pre_unit.move_and_slide(velocity)
 
@@ -169,7 +176,17 @@ func move():
 
 
 func attack():
-
+	if Input.is_action_just_pressed("ui_limaus") and button_attack == 1:
+		target_attack = get_global_mouse_position();
+		get_node("pre_unit/Waffe").look_at(target_attack)
+		get_node("pre_unit/Waffe").rotation += 1.5708
+		
+		schuss_objekt = schuss.instance()
+		schuss_objekt.position = (get_node("pre_unit/Waffe/Abschuss").get_global_position())
+		schuss_objekt.rotate((PI/180)*(get_node("pre_unit/Waffe").rotation_degrees))
+		schuss_objekt.set_schaden(curr_values.Angriff)
+		get_parent().get_parent().get_parent().add_child(schuss_objekt)
+		button_attack = 3; 
 	pass
 
 func _on_Button_pressed():#Button ist hier die figur je selbst
@@ -187,3 +204,4 @@ func getDmg(dmg):
 	if curr_values.Leben <= 0:
 		die();
 	pass
+	

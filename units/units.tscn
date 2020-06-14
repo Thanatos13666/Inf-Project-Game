@@ -1,25 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://units/pre_unit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://units/unter_units/tank.tscn" type="PackedScene" id=2]
-[ext_resource path="res://units/unter_units/scout.tscn" type="PackedScene" id=3]
-[ext_resource path="res://units/unter_units/sniper.tscn" type="PackedScene" id=4]
-[ext_resource path="res://units/unter_units/medic.tscn" type="PackedScene" id=5]
+[ext_resource path="res://units/unter_units/tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://units/unter_units/scout.tscn" type="PackedScene" id=2]
+[ext_resource path="res://units/unter_units/sniper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://units/unter_units/medic.tscn" type="PackedScene" id=4]
 
 [node name="units" type="Node2D"]
 
-[node name="pre_unit" parent="." instance=ExtResource( 1 )]
-position = Vector2( 393.36, 214.548 )
-scale = Vector2( 0.997823, 1 )
-
-[node name="tank" parent="." instance=ExtResource( 2 )]
+[node name="tank" parent="." instance=ExtResource( 1 )]
 position = Vector2( 134.746, 400.904 )
 
-[node name="scout" parent="." instance=ExtResource( 3 )]
+[node name="scout" parent="." instance=ExtResource( 2 )]
 position = Vector2( 408.38, 399.208 )
 
-[node name="sniper" parent="." instance=ExtResource( 4 )]
+[node name="sniper" parent="." instance=ExtResource( 3 )]
 position = Vector2( 129.471, 216.306 )
 
-[node name="medic" parent="." instance=ExtResource( 5 )]
+[node name="medic" parent="." instance=ExtResource( 4 )]
 position = Vector2( 668.576, 209.335 )

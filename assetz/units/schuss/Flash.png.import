@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Flash.png-900261b03983921e0c560dd9657bd068.stex"
+path="res://.import/Flash.png-df2abadfc6c71e3e08471fbaf073528c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Assets/Flash.png"
-dest_files=[ "res://.import/Flash.png-900261b03983921e0c560dd9657bd068.stex" ]
+source_file="res://assetz/units/schuss/Flash.png"
+dest_files=[ "res://.import/Flash.png-df2abadfc6c71e3e08471fbaf073528c.stex" ]
 
 [params]
 

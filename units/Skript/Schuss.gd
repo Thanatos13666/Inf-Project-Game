@@ -3,35 +3,26 @@ extends Area2D
 var speed = 300
 var schaden
 var i = 0
+var dmg_taken = true
 onready var area = $Area2D
-
-
-func _ready():
-	pass # Replace with function body.
 
 func _process(delta):
 	translate(transform.y * -speed * delta)
 	check_tank()
 
-func _on_Timer_timeout():
-	queue_free()
-
-
 func check_tank():
 
 	for body in area.get_overlapping_bodies():
-		if body.has_method("getDmg"):
-				body.getDmg(schaden)
+		if body.get_parent().has_method("getDmg"):
 				i = i + 1
+				if dmg_taken:
+					body.get_parent().getDmg(schaden)
+					dmg_taken = false
 				$Sprite/AnimationPlayer.play("Explosion")
-				queue_free()
+				yield($Sprite/AnimationPlayer, "animation_finished" )
+				self.queue_free()
 
 
 func set_schaden(var sch):
 
 	schaden = sch
-
-
-func _on_Schuss_area_entered(area):
-	$Sprite/AnimationPlayer.play("Explosion")
-	pass # Replace with function body.
