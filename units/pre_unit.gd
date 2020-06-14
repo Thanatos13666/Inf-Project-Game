@@ -6,6 +6,7 @@ var can_attack = true;
 var velocity = Vector2()
 var target = Vector2()
 var button_move = false
+var button_attack = false;
 
 #var start = position
 #var ziel
@@ -51,8 +52,7 @@ var curr_values = {
 
 var func_list = {
 	"reset_values":funcref(self,"reset_values"),
-	"test_A":funcref(self,"test_A"),
-	"test_B":funcref(self,"test_B"),
+	"Angriff":funcref(self,"Angriff"),
 	"Bewegen":funcref(self,"Bewegen")
 }
 
@@ -64,8 +64,8 @@ func _physics_process(delta):
 #test funktionen
 func test_A():
 	print("test_A")
-func test_B():
-	print("test_B")
+func Angriff():
+	button_attack = true
 
 func Bewegen():
 	button_move = true
@@ -82,6 +82,7 @@ var save_me={#hier kommt rein was wirklich JEDE unterklsse hat
 	"Ausweichen":0,
 	"Reichweite":0,
 	"Bewegungsrate":0,
+	"button_attack":false
 }
 
 func save(save_res):
@@ -91,6 +92,7 @@ func save(save_res):
 	save_me.Ausweichen = curr_values.Ausweichen
 	save_me.Reichweite = curr_values.Reichweite
 	save_me.Bewegungsrate = curr_values.Bewegungsrate
+	save_me.button_attack=button_attack
 
 	speacial_save()
 
@@ -106,6 +108,7 @@ func laden(values):
 	curr_values.Ausweichen = values.Ausweichen
 	curr_values.Reichweite = values.Reichweite
 	curr_values.Bewegungsrate = values.Bewegungsrate
+	button_attack = values.button_attack
 
 
 #base functions-----------------------------------------------------------------
