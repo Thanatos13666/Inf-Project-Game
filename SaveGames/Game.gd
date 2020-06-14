@@ -1,6 +1,7 @@
 extends Node
 var player1 =false
 
+
 var select_possible =true
 signal sp1_dran
 signal sp2_dran
@@ -28,11 +29,18 @@ func _ready():
 	if (!global.laden):#std ist false 
 		next_player()
 		set_map()
+		sp1.cam.position = $MAP.get_child(0).spaw_sp1
+		sp2.cam.position = $MAP.get_child(0).spaw_sp2
 	else:
 		speichern.laden(global.filename)
 	sp1.sp_info.get_node("Label").text=global.sp1Name
 	sp2.sp_info.get_node("Label").text=global.sp2Name
-
+	sp1.spawnpoint = $MAP.get_child(0).spaw_sp1
+	sp2.spawnpoint = $MAP.get_child(0).spaw_sp2
+	sp1.spieler_str = "SP1"
+	sp2.spieler_str = "SP2"
+	sp1.shop.lade_shop()
+	sp2.shop.lade_shop()
 	
 func recive_data():#ich habe vergesen zu was das gehört 
 	print("recived")
@@ -46,11 +54,13 @@ func next_player():
 		get_node("Spieler/SP2/CL/Control").visible = false
 		emit_signal("sp1_dran")
 		#durch alle einheiten gehen und bereit auf true setztn
+
 	else :
 		get_node("Spieler/SP2/CL/Control").visible = true
 		get_node("Spieler/SP2/Camera2D").current = true
 		get_node("Spieler/SP1/CL/Control").visible = false
 		emit_signal("sp2_dran")
+
 		#durch alle einheiten gehen und bereit auf true setztn
 
 func save(save_res):

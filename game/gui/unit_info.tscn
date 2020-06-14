@@ -15,12 +15,12 @@ const debug = preload(\"res://units/unter_units/scout.tscn\")
 func _ready():
 	$TabContainer.current_tab = 1
 	var lade =debug.instance()
-	show_cur_unit(lade)
+	visible = false
 	
 
 func show_cur_unit(unit):#wird über signal aufgerufen unit = objekID
 #laden von _values
-
+	visible = true
 #alle eintäge löschen
 	print(unit)
 	for child in info_liste.get_children():
