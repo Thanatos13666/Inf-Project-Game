@@ -77,9 +77,13 @@ anchor_bottom = 1.0
 
 [node name="units_in_game" type="Node" parent="."]
 
+<<<<<<< HEAD
+[node name="SP1" type="Node" parent="units_in_game"]
+=======
 [node name="SP1" type="Node" parent="units_in_game" groups=[
 "speichern",
 ]]
+>>>>>>> ee2a6de3a6a74f285f7bfacd0b8f0156e4cbf327
 script = ExtResource( 4 )
 
 [node name="SP2" type="Node" parent="units_in_game" groups=[
