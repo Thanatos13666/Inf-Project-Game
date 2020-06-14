@@ -1,0 +1,75 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://game/speichern_class.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+version = "0.5.0"
+data = {
+"global": {
+"Map": "beispiel_map",
+"cur_game": "null",
+"sp1Name": "aaaa",
+"sp2Name": "bbbb"
+},
+NodePath("/root/Game"): false,
+NodePath("/root/Game/Spieler/SP1/CL/Control/GUI"): {
+"geld": 180,
+"pos": Vector2( 3232, 1808.11 ),
+"zoom": Vector2( 5.02253, 5.02253 )
+},
+NodePath("/root/Game/Spieler/SP2/CL/Control/GUI"): {
+"geld": 180,
+"pos": Vector2( 3232, 4655.89 ),
+"zoom": Vector2( 5.02253, 5.02253 )
+},
+NodePath("/root/Game/units_in_game/SP1"): {
+0: {
+"Angriff": 1,
+"Ausweichen": 10,
+"Bewegungsrate": 8,
+"Leben": 10,
+"Reichweite": 7,
+"Typ": "tank",
+"pos": Vector2( 1251.2, 589.2 )
+},
+1: {
+"Angriff": 1,
+"Ausweichen": 10,
+"Bewegungsrate": 8,
+"Leben": 10,
+"Reichweite": 7,
+"Typ": "scout",
+"pos": Vector2( 2074, 589.2 )
+},
+2: {
+"Angriff": 1,
+"Ausweichen": 10,
+"Bewegungsrate": 8,
+"Leben": 10,
+"Reichweite": 7,
+"Typ": "sniper",
+"pos": Vector2( 1444.8, 879.6 )
+},
+3: {
+"Angriff": 1,
+"Ausweichen": 10,
+"Bewegungsrate": 8,
+"Leben": 10,
+"Reichweite": 7,
+"Typ": "medic",
+"pos": Vector2( 2074, 879.6 )
+}
+},
+NodePath("/root/Game/units_in_game/SP2"): {
+0: {
+"Angriff": 1,
+"Ausweichen": 10,
+"Bewegungsrate": 8,
+"Leben": 10,
+"Reichweite": 7,
+"Typ": "sniper",
+"pos": Vector2( 800, 6104 )
+}
+}
+}

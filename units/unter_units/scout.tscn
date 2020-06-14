@@ -15,7 +15,7 @@ var dashBonus = 4;
 
 #Speichern und Laden------------------------------------------------------------
 func speacial_save():
-	save_me.typ =\"scout\"
+	save_me.Typ =\"scout\"
 	
 #functions----------------------------------------------------------------------
 func dash():

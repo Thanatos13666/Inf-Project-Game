@@ -16,7 +16,6 @@ func _on_Button_pressed(id):
 	
 	if(id==1):
 		speichern()
-		
 	else:
 		#get last lime saved 
 		# if that < x 
@@ -29,12 +28,9 @@ func _on_Button_pressed(id):
 			get_tree().quit()
 	
 func speichern():
-	#code save
+	speichern.save(global.file_name)
 	print(\"Save\")
-	var packed_scene = PackedScene.new()
-	packed_scene.pack(get_tree().get_current_scene())
-	print(global.cur_game)
-	ResourceSaver.save(global.cur_game, packed_scene)
+
 	pass
 	
 	
