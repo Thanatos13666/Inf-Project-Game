@@ -5,6 +5,7 @@ var can_attack = true;
 # Variablen für move()
 var velocity = Vector2()
 var target = Vector2()
+var button_move = false
 
 #var start = position
 #var ziel
@@ -51,12 +52,13 @@ var curr_values = {
 var func_list = {
 	"reset_values":funcref(self,"reset_values"),
 	"test_A":funcref(self,"test_A"),
-	"test_B":funcref(self,"test_B")
+	"test_B":funcref(self,"test_B"),
+	"Bewegen":funcref(self,"Bewegen")
 }
 
 
 func _physics_process(delta):
-	move(curr_values.Bewegungsrate * delta)
+	move()
 
 
 #test funktionen
@@ -64,6 +66,10 @@ func test_A():
 	print("test_A")
 func test_B():
 	print("test_B")
+
+func Bewegen():
+	button_move = true
+
 
 #Speichern und Laden------------------------------------------------------------
 
@@ -110,7 +116,7 @@ func die():
 	self.queue_free();
 	pass
 
-func move(var distance):
+func move():
 	if gamenode == null:
 		return
 
@@ -144,8 +150,9 @@ func move(var distance):
 
 # move() ohne Pathfinding
 
-	if Input.is_action_pressed('ui_remaus'):
+	if Input.is_action_pressed('ui_remaus') && button_move == true:
 		target = get_global_mouse_position()
+		button_move = false
 
 	if target == Vector2(0,0):
 		return
@@ -154,6 +161,7 @@ func move(var distance):
 	velocity = (target - $pre_unit.get_global_position()).normalized() * (curr_values.Bewegungsrate*25)
 	if (target - $pre_unit.get_global_position()).length() > 5:
 		$pre_unit.move_and_slide(velocity)
+
 
 
 
