@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D
 var gamenode # wird besetzt sobbals obj erzeugt wird
 var can_attack = true;
 
@@ -130,11 +130,11 @@ func move(var distance):
 #	for i in range(path.size()):
 #		var sub_ziel = start.distance_to(path[0])
 #		if distance <= sub_ziel and distance >= 0:
-#			look_at(path[0])
-#			move_and_slide((path[0] - position).normalized() * (curr_values.Bewegungsrate*25))
+#			$pre_unit.look_at(path[0])
+#			$pre_unit.move_and_slide((path[0] - $pre_unit.get_global_position()).normalized() * (curr_values.Bewegungsrate*25))
 #			break
 #		elif distance < 0:
-#			position = path[0]
+#			$pre_unit.get_global_position() = path[0]
 #			break
 #		distance -= sub_ziel
 #		start = path[0]
@@ -150,10 +150,10 @@ func move(var distance):
 	if target == Vector2(0,0):
 		return
 
-	rotation = velocity.angle()
-	velocity = (target - position).normalized() * (curr_values.Bewegungsrate*25)
-	if (target - position).length() > 5:
-		move_and_slide(velocity)
+	$pre_unit.rotation = velocity.angle()
+	velocity = (target - $pre_unit.get_global_position()).normalized() * (curr_values.Bewegungsrate*25)
+	if (target - $pre_unit.get_global_position()).length() > 5:
+		$pre_unit.move_and_slide(velocity)
 
 
 
