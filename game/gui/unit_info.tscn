@@ -35,7 +35,7 @@ func show_cur_unit(unit):#wird über signal aufgerufen unit = objekID
 # für jedeneitrag ein neues obj erstellen und anhängen
 	for i in unit.curr_values.size():
 		add = entry.instance()
-		add.get_node(\"Atribut\").text = str(key[i])
+		add.get_node(\"Attribut\").text = str(key[i])
 		add.get_node(\"Curent\").text = str(cur[i])
 		add.get_node(\"Max\").text = str(unit.base_values[key[i]])
 		info_liste.add_child(add)

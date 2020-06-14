@@ -91,4 +91,4 @@ margin_right = 767.0
 margin_bottom = 467.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Spiel Beenden"
+text = "Spiel beenden"

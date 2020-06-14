@@ -4,24 +4,24 @@
 margin_right = 186.0
 margin_bottom = 14.0
 
-[node name="Atribut" type="Label" parent="."]
-margin_right = 80.0
+[node name="Attribut" type="Label" parent="."]
+margin_right = 76.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
-text = "Atribut"
+text = "Attribut"
 valign = 1
 
 [node name="vSeparator" type="VSeparator" parent="."]
-margin_left = 84.0
-margin_right = 88.0
+margin_left = 80.0
+margin_right = 84.0
 margin_bottom = 14.0
 
 [node name="Curent" type="Label" parent="."]
-margin_left = 92.0
+margin_left = 88.0
 margin_right = 133.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 41, 0 )
-text = "Aktuel"
+text = "Aktuell"
 align = 2
 valign = 1
 
