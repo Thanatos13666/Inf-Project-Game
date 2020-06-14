@@ -10,16 +10,18 @@ data = {
 "Map": "beispiel_map",
 "cur_game": "null",
 "sp1Name": "aaaa",
-"sp2Name": "dddd"
+"sp2Name": "bbbb"
 },
-NodePath("/root/Game"): true,
+NodePath("/root/Game"): false,
 NodePath("/root/Game/Spieler/SP1/CL/Control/GUI"): {
-"geld": 110,
-"spName": "PLAYER NAME"
+"geld": 180,
+"pos": Vector2( 3232, 1808.11 ),
+"zoom": Vector2( 5.02253, 5.02253 )
 },
 NodePath("/root/Game/Spieler/SP2/CL/Control/GUI"): {
-"geld": 100,
-"spName": "PLAYER NAME"
+"geld": 180,
+"pos": Vector2( 3232, 4655.89 ),
+"zoom": Vector2( 5.02253, 5.02253 )
 },
 NodePath("/root/Game/units_in_game/SP1"): {
 0: {
@@ -29,7 +31,7 @@ NodePath("/root/Game/units_in_game/SP1"): {
 "Leben": 10,
 "Reichweite": 7,
 "Typ": "tank",
-"pos": Vector2( 920, 364 )
+"pos": Vector2( 1251.2, 589.2 )
 },
 1: {
 "Angriff": 1,
@@ -38,7 +40,7 @@ NodePath("/root/Game/units_in_game/SP1"): {
 "Leben": 10,
 "Reichweite": 7,
 "Typ": "scout",
-"pos": Vector2( 1320, 364 )
+"pos": Vector2( 2074, 589.2 )
 },
 2: {
 "Angriff": 1,
@@ -47,7 +49,7 @@ NodePath("/root/Game/units_in_game/SP1"): {
 "Leben": 10,
 "Reichweite": 7,
 "Typ": "sniper",
-"pos": Vector2( 1920, 364 )
+"pos": Vector2( 1444.8, 879.6 )
 },
 3: {
 "Angriff": 1,
@@ -56,55 +58,18 @@ NodePath("/root/Game/units_in_game/SP1"): {
 "Leben": 10,
 "Reichweite": 7,
 "Typ": "medic",
-"pos": Vector2( 2280, 364 )
+"pos": Vector2( 2074, 879.6 )
+}
 },
-4: {
-"Angriff": 1,
-"Ausweichen": 10,
-"Bewegungsrate": 8,
-"Leben": 10,
-"Reichweite": 7,
-"Typ": "scout",
-"pos": Vector2( 1316.4, 904 )
-},
-5: {
+NodePath("/root/Game/units_in_game/SP2"): {
+0: {
 "Angriff": 1,
 "Ausweichen": 10,
 "Bewegungsrate": 8,
 "Leben": 10,
 "Reichweite": 7,
 "Typ": "sniper",
-"pos": Vector2( 2164, 904 )
-},
-6: {
-"Angriff": 1,
-"Ausweichen": 10,
-"Bewegungsrate": 8,
-"Leben": 10,
-"Reichweite": 7,
-"Typ": "medic",
-"pos": Vector2( 1903.2, 1295.2 )
-},
-7: {
-"Angriff": 1,
-"Ausweichen": 10,
-"Bewegungsrate": 8,
-"Leben": 10,
-"Reichweite": 7,
-"Typ": "medic",
-"pos": Vector2( 1642.4, 1816.8 )
-},
-8: {
-"Angriff": 1,
-"Ausweichen": 10,
-"Bewegungsrate": 8,
-"Leben": 10,
-"Reichweite": 7,
-"Typ": "medic",
-"pos": Vector2( 1446.8, 2208 )
+"pos": Vector2( 800, 6104 )
 }
-},
-NodePath("/root/Game/units_in_game/SP2"): {
-
 }
 }

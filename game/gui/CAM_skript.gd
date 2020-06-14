@@ -151,15 +151,17 @@ func calculate_money_change():
 func save(save_res):
 	var save_me = {
 		"geld":geld,
-		"spName":sp_info.get_node("Label").text
+		"pos":cam.position,
+		"zoom":cam.zoom
 	}
 	save_res.data[get_path()] = save_me
 	pass
 	
 func laden(save_data):
-	geld = save_data.data[get_path()].geld
-	sp_info.get_node("Label").text = save_data.data[get_path()].spName
-	
+	var daten = save_data.data[get_path()]
+	geld = daten.geld
+	cam.position = daten.pos
+	cam.zoom = daten.zoom
 	pass
 
 

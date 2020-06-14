@@ -22,14 +22,16 @@ func _ready():
 	connect("sp1_dran",sp1,"jetzt_dran")
 	connect("sp2_dran",sp2,"jetzt_dran")
 	
-	next_player()#spieler 1 begint + spieler 2 verstecken
+	#spieler 1 begint + spieler 2 verstecken
 	
 	
 	if (!global.laden):#std ist false 
+		next_player()
 		set_map()
 	else:
 		speichern.laden(global.filename)
-
+	sp1.sp_info.get_node("Label").text=global.sp1Name
+	sp2.sp_info.get_node("Label").text=global.sp2Name
 
 	
 func recive_data():#ich habe vergesen zu was das gehört 
@@ -57,6 +59,8 @@ func save(save_res):
 
 func laden(save_res):
 	player1 = save_res.data[get_path()]
+	player1 = !player1
+	next_player()
 	set_map()
 	
 	

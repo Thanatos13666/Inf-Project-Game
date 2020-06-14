@@ -14,11 +14,8 @@ func _ready():
 
 func _on_Button_pressed(id):
 	
-	if(id ==4):
-		speichern.laden(1)
-	else: if(id==1):
-		speichern.save(1)
-		
+	if(id==1):
+		speichern()
 	else:
 		#get last lime saved 
 		# if that < x 
@@ -31,7 +28,7 @@ func _on_Button_pressed(id):
 			get_tree().quit()
 	
 func speichern():
-	#code save
+	speichern.save(global.file_name)
 	print(\"Save\")
 
 	pass
@@ -87,16 +84,7 @@ text = "Hauptmenü"
 [node name="Ende" type="Button" parent="VBoxContainer"]
 margin_top = 350.0
 margin_right = 767.0
-margin_bottom = 465.0
+margin_bottom = 467.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Spiel Beenden"
-
-[node name="Laden" type="Button" parent="VBoxContainer"]
-margin_top = 469.0
-margin_right = 767.0
-margin_bottom = 584.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
-text = "Laden (tmp)"
