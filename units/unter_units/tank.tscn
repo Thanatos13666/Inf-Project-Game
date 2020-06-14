@@ -18,7 +18,7 @@ var shieldBonus = 5;
 
 #Speichern und Laden------------------------------------------------------------
 func speacial_save():
-	save_me.typ =\"tank\"
+	save_me.Typ =\"tank\"
 	
 #functions----------------------------------------------------------------------
 func schildHochfahren():

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_48_preset.tres" type="DynamicFont" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends HBoxContainer
+var list
+
+func _on_Button_pressed():
+	for i in get_tree().get_nodes_in_group(\"speicher_stande\"):
+		i.pressed =false
+		
+	$MarginContainer/Button.pressed = true
+	list.cur_select= $MarginContainer/Label.text
+"
+
+[node name="speicherstnd" type="HBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 108.0
+script = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer"]
+margin_right = 1280.0
+margin_bottom = 108.0
+custom_fonts/font = ExtResource( 1 )
+text = "Sielstand_001"
+
+[node name="Button" type="Button" parent="MarginContainer" groups=[
+"speicher_stande",
+]]
+margin_right = 1280.0
+margin_bottom = 108.0
+toggle_mode = true
+flat = true
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_Button_pressed"]

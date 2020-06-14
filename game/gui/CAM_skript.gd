@@ -13,6 +13,8 @@ var geld=100
 var geld_anderung=10
 #links
 onready var unit_info=get_node("VBoxContainer2/margin hold/cur_unit/unit_info")
+onready var sp_info =get_node("VBoxContainer2/top bar/top_groop/v align/h align/icon container/HBoxContainer")
+
 
 #reddy
 func _ready():
@@ -22,12 +24,6 @@ func _ready():
 	px_hoehe = 6400.0
 	px_breite =6400.0
 	#spieler
-	
-	
-	
-
-
-
 
 func _process(delta):
 	change = Vector2(0,0)
@@ -140,10 +136,34 @@ func r_updateborders():
 func jetzt_dran(): #reagiert sobald ein spieler dran ist
 	geld += geld_anderung
 	cam = get_parent().get_parent().get_parent().get_node("Camera2D")
-
+	calculate_money_change()
+	
 func _on_Button_pressed():
 	owner.next_player()
 
 
 func _on_Button_toggled(button_pressed):
 	get_node("VBoxContainer2/margin hold/shop+ buton/shop grop/HBoxContainer/VBoxContainer/u_r/Shop_scroll_con").visible = button_pressed
+
+func calculate_money_change():
+	print("calculate_money_change in CAM_skript zeile 150 muss ausdefiniert werden")
+
+func save(save_res):
+	var save_me = {
+		"geld":geld,
+		"spName":sp_info.get_node("Label").text
+	}
+	save_res.data[get_path()] = save_me
+	pass
+	
+func laden(save_data):
+	geld = save_data.data[get_path()].geld
+	sp_info.get_node("Label").text = save_data.data[get_path()].spName
+	
+	pass
+
+
+
+
+
+
