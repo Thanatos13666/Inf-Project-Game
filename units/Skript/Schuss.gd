@@ -20,8 +20,8 @@ func _on_Timer_timeout():
 func check_tank():
 
 	for body in area.get_overlapping_bodies():
-		if body.has_method("get_dmg") and body.leben > 0:
-				body.get_dmg(schaden)
+		if body.has_method("getDmg"):
+				body.getDmg(schaden)
 				i = i + 1
 				$Sprite/AnimationPlayer.play("Explosion")
 				queue_free()
@@ -30,3 +30,8 @@ func check_tank():
 func set_schaden(var sch):
 
 	schaden = sch
+
+
+func _on_Schuss_area_entered(area):
+	$Sprite/AnimationPlayer.play("Explosion")
+	pass # Replace with function body.

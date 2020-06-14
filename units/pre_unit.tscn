@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://units/pre_unit.gd" type="Script" id=1]
 [ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=2]
 [ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=3]
-[ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=4]
+[ext_resource path="res://units/Skript/Waffe.gd" type="Script" id=4]
+[ext_resource path="res://units/Skript/Abschuss.gd" type="Script" id=5]
+[ext_resource path="res://Player/Assets/Flash.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 119.784, 81.1353 )
@@ -22,11 +24,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 105.592, 10 )
-
 [node name="pre_unit" type="Node2D"]
-position = Vector2( 481.122, 262.218 )
 script = ExtResource( 1 )
 
 [node name="pre_unit" type="KinematicBody2D" parent="."]
@@ -41,22 +39,26 @@ position = Vector2( 5.10037, 0.194305 )
 shape = SubResource( 1 )
 
 [node name="Waffe" type="KinematicBody2D" parent="pre_unit"]
-position = Vector2( 50.3224, 57.5418 )
+position = Vector2( 50.372, 57.542 )
 rotation = 1.5708
 
 [node name="Waffe" type="Sprite" parent="pre_unit/Waffe"]
-position = Vector2( -56.9056, 44.5713 )
+position = Vector2( -56.906, 88 )
+rotation = 6.28319
 texture = ExtResource( 3 )
+offset = Vector2( 0, -50 )
+script = ExtResource( 4 )
 
 [node name="Abschuss" type="Node2D" parent="pre_unit/Waffe"]
 position = Vector2( -55.0807, -90.6108 )
+script = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="pre_unit/Waffe/Abschuss"]
 
 [node name="Sprite" type="Sprite" parent="pre_unit/Waffe/Abschuss"]
 position = Vector2( -0.654486, 14.9698 )
 scale = Vector2( 1, 0.971935 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 vframes = 3
 hframes = 3
 frame = 1
@@ -64,19 +66,11 @@ frame = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="pre_unit/Waffe/Abschuss/Sprite"]
 anims/Abschuss = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="pre_unit/Waffe"]
-position = Vector2( 21.5847, -51.5248 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="pre_unit/Waffe/Area2D"]
-position = Vector2( -77.7239, 95.001 )
-rotation = -1.5708
-shape = SubResource( 3 )
-
 [node name="Button" type="Button" parent="pre_unit"]
 margin_left = -120.065
-margin_top = -84.2094
+margin_top = -85.3174
 margin_right = 123.934
-margin_bottom = 80.7907
+margin_bottom = 79.6827
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false

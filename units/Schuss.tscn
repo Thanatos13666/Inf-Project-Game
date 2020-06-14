@@ -37,7 +37,6 @@ anims/Explosion = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
-
 one_shot = true
 autostart = true
 
@@ -46,3 +45,4 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -1.52588e-005, -0.323534 )
 shape = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_Schuss_area_entered"]

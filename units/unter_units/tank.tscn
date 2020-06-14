@@ -54,4 +54,5 @@ script = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Waffe" parent="pre_unit/Waffe" index="0"]
+rotation = -18.8496
 texture = ExtResource( 3 )

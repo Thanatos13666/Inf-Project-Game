@@ -9,7 +9,8 @@
 [node name="units" type="Node2D"]
 
 [node name="pre_unit" parent="." instance=ExtResource( 1 )]
-position = Vector2( 396.7, 214.548 )
+position = Vector2( 393.36, 214.548 )
+scale = Vector2( 0.997823, 1 )
 
 [node name="tank" parent="." instance=ExtResource( 2 )]
 position = Vector2( 134.746, 400.904 )
