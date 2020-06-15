@@ -5,5 +5,5 @@
 
 [node name="pre_Set" instance=ExtResource( 1 )]
 
-[node name="TextureRect" parent="ColorRect" index="1"]
+[node name="TextureRect" parent="HBoxContainer/MarginContainer" index="0"]
 texture = ExtResource( 2 )

@@ -26,8 +26,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 6464
 limit_bottom = 6464
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
 smoothing_enabled = true
 smoothing_speed = 3.0
 drag_margin_left = 0.0
@@ -43,6 +41,9 @@ layer = 0
 [node name="Control" type="Control" parent="Spieler/SP1/CL"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GUI" parent="Spieler/SP1/CL/Control" instance=ExtResource( 3 )]
 
@@ -55,8 +56,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 6464
 limit_bottom = 6464
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
 smoothing_enabled = true
 smoothing_speed = 3.0
 drag_margin_left = 0.0
