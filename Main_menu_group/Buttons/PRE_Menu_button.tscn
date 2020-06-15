@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Main_menu_group/Buttons/Menu_button.gd" type="Script" id=1]
 [ext_resource path="res://assetz/gui/Button.png" type="Texture" id=2]
-[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_48_preset.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assetz/Fonts/myskinnytype/main_menu.tres" type="DynamicFont" id=3]
 
 [node name="Menu_button" type="Button"]
 anchor_right = 1.0

@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assetz/gui/Menu-_Hintergrung.jpg" type="Texture" id=1]
+[ext_resource path="res://assetz/Fonts/myskinnytype/main_menu.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assetz/gui/Button.png" type="Texture" id=4]
 
 [sub_resource type="GDScript" id=1]
 resource_name = "main"
@@ -59,35 +62,39 @@ func _on_Laden_pressed():
 "
 
 [sub_resource type="DynamicFont" id=2]
-size = 48
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
 size = 30
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+font_data = ExtResource( 3 )
 
 [node name="Spiel_laden" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 1 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer"]
 margin_right = 1280.0
-margin_bottom = 108.0
+margin_bottom = 64.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
 text = "Spiel Auswählen"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-margin_top = 112.0
+margin_top = 68.0
 margin_right = 1280.0
 margin_bottom = 641.0
 size_flags_horizontal = 3
@@ -95,7 +102,7 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 margin_right = 1280.0
-margin_bottom = 529.0
+margin_bottom = 573.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -104,28 +111,123 @@ margin_top = 645.0
 margin_right = 1280.0
 margin_bottom = 720.0
 
-[node name="Zurück" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+editor/display_folded = true
 margin_right = 424.0
 margin_bottom = 75.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+size_flags_vertical = 3
+
+[node name="Zurück" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
 text = "Zurück"
 
-[node name="Löschen" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+region_rect = Rect2( -0.0847588, -0.000465393, 349.085, 139 )
+patch_margin_left = 24
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 22
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+text = "Zurück"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 margin_left = 428.0
 margin_right = 852.0
 margin_bottom = 75.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
-text = "Löschen"
+size_flags_vertical = 3
 
-[node name="Laden" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Laden" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+region_rect = Rect2( -0.0847588, -0.000465393, 349.085, 139 )
+patch_margin_left = 24
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 22
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+text = "Laden"
+align = 1
+valign = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+editor/display_folded = true
 margin_left = 856.0
 margin_right = 1280.0
 margin_bottom = 75.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
-text = "Laden"
+size_flags_vertical = 3
+
+[node name="Löschen" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Löschen"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+region_rect = Rect2( -0.0847588, -0.000465393, 349.085, 139 )
+patch_margin_left = 24
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 22
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+margin_right = 424.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+text = "Löschen"
+align = 1
+valign = 1
 
 [node name="bestätige_del" type="ConfirmationDialog" parent="."]
 visible = true
@@ -140,7 +242,7 @@ margin_bottom = -0.0799866
 popup_exclusive = true
 window_title = "Bist du dir sicher?"
 dialog_text = "Soll _name_ wirklich PERANET gelöscht werden"
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Zurück" to="." method="_on_Zurck_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Löschen" to="." method="_on_Lschen_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Laden" to="." method="_on_Laden_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer3/Zurück" to="." method="_on_Zurck_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer/Laden" to="." method="_on_Laden_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer2/Löschen" to="." method="_on_Lschen_pressed"]
 [connection signal="confirmed" from="bestätige_del" to="." method="_on_besttige_del_confirmed"]
