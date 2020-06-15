@@ -16,7 +16,6 @@ func laden(save_res):
 	
 	subdata = save_res.data[get_path()]
 	for i in subdata :
-		print("res://units/unter_units/"+subdata[i].Typ+".tscn")
 		var child = load("res://units/unter_units/"+subdata[i].Typ+".tscn")
 		var  add= child.instance()
 		add_child(add)

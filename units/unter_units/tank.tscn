@@ -11,7 +11,15 @@ script/source = "extends \"res://units/pre_unit.gd\"
 func _ready():
 	base_values[\"Schild\"]=10
 	curr_values [\"Schild\"]=0
+	func_list[\"Schild Hochfaren\"] =funcref(self,\"schildHochfahren\")
 	
+	base_values.Preis=120
+	base_values.Leben =15
+	base_values.Angriff=5
+	base_values.Ausweichen=5
+	base_values.Reichweite=500
+	base_values.Bewegungsrate=600
+	reset_values()
 
 
 var shieldBonus = 5;

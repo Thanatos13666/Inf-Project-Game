@@ -6,13 +6,14 @@ var can_attack = true;
 var velocity = Vector2()
 var target = Vector2()
 var target_attack = Vector2()
-var button_move = false
+var button_move = 0
 var button_attack = 0;
 var schuss = preload("res://units/Schuss.tscn")
 var schuss_objekt
 
 var test_count =0
 
+var old_pos
 #var start = position
 #var ziel
 #var bewegung = Vector2()
@@ -27,8 +28,8 @@ var base_values = {
 	"Leben":10,
 	"Angriff":5,
 	"Ausweichen":10,
-	"Reichweite": 7,
-	"Bewegungsrate":8
+	"Reichweite": 700,
+	"Bewegungsrate":400
 }
 
 #######################################################################################
@@ -69,14 +70,19 @@ func _process(delta):
 	attack();
 
 #test funktionen
-func test_A():
-	print("test_A")
+
 func Angriff():
 	if button_attack == 0:
 		button_attack = 1
+	if button_move == 1:
+		button_move = 0
 
 func Bewegen():
-	button_move = true
+	if button_move == 0:
+		button_move = 1
+	if button_attack == 1:
+		button_attack = 0
+	
 
 
 #Speichern und Laden------------------------------------------------------------
@@ -161,16 +167,17 @@ func move():
 
 # move() ohne Pathfinding
 
-	if Input.is_action_pressed('ui_remaus') && button_move == true:
+	if Input.is_action_pressed('ui_remaus') && button_move == 1:
 		target = get_global_mouse_position()
-		button_move = false
-
+		old_pos = $pre_unit.position
+		button_move = 2
 	if target == Vector2(0,0):
 		return
 
-	velocity = (target - $pre_unit.get_global_position()).normalized() * (curr_values.Bewegungsrate*25)
+	velocity = (target - $pre_unit.get_global_position()).normalized() * (200)
 	$pre_unit.rotation = velocity.angle()
-	if (target - $pre_unit.get_global_position()).length() > 5:
+
+	if (target - $pre_unit.get_global_position()).length() > 5 and old_pos.distance_to($pre_unit.position)<curr_values.Bewegungsrate:
 		$pre_unit.move_and_slide(velocity)
 
 
@@ -179,13 +186,14 @@ func attack():
 		target_attack = get_global_mouse_position();
 		get_node("pre_unit/Waffe").look_at(target_attack)
 		get_node("pre_unit/Waffe").rotation += 1.5708
-
+		
 		schuss_objekt = schuss.instance()
 		schuss_objekt.position = (get_node("pre_unit/Waffe/Abschuss").get_global_position())
-		schuss_objekt.rotate((PI/180)*(get_node("pre_unit/Waffe").rotation_degrees))
+		schuss_objekt.rotate((PI/180)*(get_node("pre_unit/Waffe").rotation_degrees+get_node("pre_unit").rotation_degrees+90))
 		schuss_objekt.set_schaden(curr_values.Angriff)
-		get_parent().get_parent().get_parent().add_child(schuss_objekt)
-		button_attack = 3;
+		schuss_objekt.from_unit=self
+		gamenode.add_child(schuss_objekt)
+		button_attack = 2;
 	pass
 
 func _on_Button_pressed():#Button ist hier die figur je selbst
@@ -193,9 +201,6 @@ func _on_Button_pressed():#Button ist hier die figur je selbst
 
 	if gamenode.select_possible:
 		emit_signal("is_selected",self)
-		print("select possible")
-	else:
-		print("select")
 	pass
 
 func getDmg(dmg):

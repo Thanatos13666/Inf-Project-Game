@@ -8,13 +8,13 @@
 [node name="units" type="Node2D"]
 
 [node name="tank" parent="." instance=ExtResource( 1 )]
-position = Vector2( 134.746, 400.904 )
+rotation = 0.0
 
 [node name="scout" parent="." instance=ExtResource( 2 )]
-position = Vector2( 408.38, 399.208 )
+rotation = 0.0
 
 [node name="sniper" parent="." instance=ExtResource( 3 )]
-position = Vector2( 129.471, 216.306 )
+rotation = 0.0
 
 [node name="medic" parent="." instance=ExtResource( 4 )]
-position = Vector2( 668.576, 209.335 )
+rotation = 0.0

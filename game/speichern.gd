@@ -22,8 +22,6 @@ func save(filename):
 	print("error" + str(error))
 
 func laden(path):
-	print("laden")
-	print(get_tree().get_nodes_in_group("speichern"))
 	var file = File.new()
 	if not file.file_exists(path):
 		print("load error")

@@ -4,9 +4,17 @@
 [ext_resource path="res://assetz/units/SP1/medic/Hull.png" type="Texture" id=2]
 [ext_resource path="res://assetz/units/SP1/medic/Gun.png" type="Texture" id=3]
 
-
 [sub_resource type="GDScript" id=1]
 script/source = "extends \"res://units/pre_unit.gd\"
+
+func _ready():
+	base_values.Preis=80
+	base_values.Leben =10
+	base_values.Angriff=1
+	base_values.Ausweichen=10
+	base_values.Reichweite=200
+	base_values.Bewegungsrate=700
+	reset_values()
 
 
 #Speichern und Laden------------------------------------------------------------

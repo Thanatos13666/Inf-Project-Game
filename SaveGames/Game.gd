@@ -53,6 +53,9 @@ func next_player():
 		get_node("Spieler/SP1/Camera2D").current = true
 		get_node("Spieler/SP2/CL/Control").visible = false
 		emit_signal("sp1_dran")
+		for unit in $units_in_game/SP1.get_children():
+			unit.button_move = 0
+			unit.button_attack = 0;
 		#durch alle einheiten gehen und bereit auf true setztn
 
 	else :
@@ -60,7 +63,9 @@ func next_player():
 		get_node("Spieler/SP2/Camera2D").current = true
 		get_node("Spieler/SP1/CL/Control").visible = false
 		emit_signal("sp2_dran")
-
+		for unit in $units_in_game/SP2.get_children():
+			unit.button_move = 0
+			unit.button_attack = 0;
 		#durch alle einheiten gehen und bereit auf true setztn
 
 func save(save_res):
@@ -75,7 +80,6 @@ func laden(save_res):
 	
 	
 func set_map():
-	print(global.Map)
 	var Mappath = "res://game/maps/"+ global.Map + ".tscn"
 	var ladekarte = load(Mappath)
 	get_node("MAP").add_child(ladekarte.instance())

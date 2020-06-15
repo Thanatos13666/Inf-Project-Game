@@ -4,13 +4,18 @@
 [ext_resource path="res://assetz/units/SP1/scout/Hull.png" type="Texture" id=2]
 [ext_resource path="res://assetz/units/SP1/scout/Gun.png" type="Texture" id=3]
 
-
 [sub_resource type="GDScript" id=1]
 script/source = "extends \"res://units/pre_unit.gd\"
 
 #variables----------------------------------------------------------------------
 func _ready():
-	pass
+	base_values.Preis=40
+	base_values.Leben =5
+	base_values.Angriff=3
+	base_values.Ausweichen=30
+	base_values.Reichweite=600
+	base_values.Bewegungsrate=1000
+	reset_values()
 
 var dashBonus = 4;
 

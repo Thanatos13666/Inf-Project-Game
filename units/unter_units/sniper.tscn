@@ -4,9 +4,17 @@
 [ext_resource path="res://assetz/units/SP1/sniper/Hull.png" type="Texture" id=2]
 [ext_resource path="res://assetz/units/SP1/sniper/Gun.png" type="Texture" id=3]
 
-
 [sub_resource type="GDScript" id=1]
 script/source = "extends \"res://units/pre_unit.gd\"
+
+func _ready():
+	base_values.Preis= 150
+	base_values.Leben =12
+	base_values.Angriff=10
+	base_values.Ausweichen=0
+	base_values.Reichweite=1500
+	base_values.Bewegungsrate=450
+	reset_values()
 
 #Speichern und Laden------------------------------------------------------------
 func speacial_save():
