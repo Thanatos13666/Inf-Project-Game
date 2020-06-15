@@ -1,0 +1,130 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://game/speichern_class.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+version = "0.5.0"
+data = {
+"global": {
+"Map": "beispiel_map",
+"cur_game": "null",
+"sp1Name": "sander",
+"sp2Name": "joshi"
+},
+NodePath("/root/Game"): true,
+NodePath("/root/Game/Spieler/SP1/CL/Control/GUI"): {
+"geld": 25,
+"pos": Vector2( 2619.2, 1614.4 ),
+"zoom": Vector2( 2.68, 2.68 )
+},
+NodePath("/root/Game/Spieler/SP2/CL/Control/GUI"): {
+"geld": 35,
+"pos": Vector2( 5017.6, 5462.4 ),
+"zoom": Vector2( 2.26, 2.26 )
+},
+NodePath("/root/Game/units_in_game/SP1"): {
+0: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 712.987, -2262.78 )
+},
+1: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 1064.41, -1551.2 )
+},
+2: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 1146.59, -2584.92 )
+},
+3: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 1897.51, -1771.96 )
+},
+4: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 55.8946, -1445.15 )
+},
+5: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 1175.21, -1978.56 )
+},
+6: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 721.294, -693.223 )
+},
+7: {
+"Angriff": 3,
+"Ausweichen": 30,
+"Bewegungsrate": 1000,
+"Leben": 5,
+"Reichweite": 600,
+"Typ": "scout",
+"button_attack": 0,
+"pos": Vector2( 1448.95, -2238.38 )
+}
+},
+NodePath("/root/Game/units_in_game/SP2"): {
+0: {
+"Angriff": 10,
+"Ausweichen": 0,
+"Bewegungsrate": 450,
+"Leben": 12,
+"Reichweite": 1500,
+"Typ": "sniper",
+"button_attack": 0,
+"pos": Vector2( -293.248, 847.969 )
+},
+1: {
+"Angriff": 10,
+"Ausweichen": 0,
+"Bewegungsrate": 450,
+"Leben": 12,
+"Reichweite": 1500,
+"Typ": "sniper",
+"button_attack": 0,
+"pos": Vector2( -617.75, 552.198 )
+}
+}
+}

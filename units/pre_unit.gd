@@ -100,7 +100,7 @@ var save_me={#hier kommt rein was wirklich JEDE unterklsse hat
 }
 
 func save(save_res):
-	save_me.pos = position
+	save_me.pos = $pre_unit.position
 	save_me.Leben = curr_values.Leben
 	save_me.Angriff = curr_values.Angriff
 	save_me.Ausweichen = curr_values.Ausweichen
@@ -116,7 +116,7 @@ func speacial_save(): #wird in den deinzelnen klassen ausdiferenziert
 	pass
 
 func laden(values):
-	position = values.pos
+	$pre_unit.position = values.pos
 	curr_values.Leben = values.Leben
 	curr_values.Angriff = values.Angriff
 	curr_values.Ausweichen = values.Ausweichen
