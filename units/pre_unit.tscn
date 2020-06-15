@@ -1,28 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://units/pre_unit.gd" type="Script" id=1]
 [ext_resource path="res://assetz/units/Hull_01.png" type="Texture" id=2]
 [ext_resource path="res://assetz/units/Gun_01.png" type="Texture" id=3]
 [ext_resource path="res://units/Skript/Waffe.gd" type="Script" id=4]
 [ext_resource path="res://units/Skript/Abschuss.gd" type="Script" id=5]
-[ext_resource path="res://assetz/units/schuss/Flash.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 82.6295, 116.548 )
-
-[sub_resource type="Animation" id=2]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 4, 5, 6 ]
-}
 
 [node name="pre_unit" type="Node2D"]
 rotation = 1.5708
@@ -49,17 +34,6 @@ script = ExtResource( 4 )
 position = Vector2( 0, -250 )
 script = ExtResource( 5 )
 
-[node name="Timer" type="Timer" parent="pre_unit/Waffe/Abschuss"]
-
-[node name="Sprite" type="Sprite" parent="pre_unit/Waffe/Abschuss"]
-texture = ExtResource( 6 )
-vframes = 3
-hframes = 3
-frame = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="pre_unit/Waffe/Abschuss/Sprite"]
-anims/Abschuss = SubResource( 2 )
-
 [node name="Button" type="Button" parent="pre_unit"]
 margin_left = -82.0
 margin_top = -122.864
@@ -69,5 +43,4 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="pre_unit/Waffe/Abschuss/Timer" to="pre_unit/Waffe/Abschuss" method="_on_Timer_timeout"]
 [connection signal="pressed" from="pre_unit/Button" to="." method="_on_Button_pressed"]

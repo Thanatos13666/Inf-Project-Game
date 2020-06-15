@@ -9,7 +9,7 @@ var futur_pos = Vector2(0,0)
 var px_hoehe =0
 var px_breite =0
 #spieler varieabeln
-var geld=100
+var geld=315
 var geld_anderung=10
 var spieler_str
 #links
@@ -138,6 +138,7 @@ func r_updateborders():
 
 func jetzt_dran(): #reagiert sobald ein spieler dran ist
 	geld += geld_anderung
+	sp_info.get_node("money/HBoxContainer/MarginContainer2/Label").text = str(geld)
 	cam = get_parent().get_parent().get_parent().get_node("Camera2D")
 	calculate_money_change()
 	

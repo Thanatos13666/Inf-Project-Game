@@ -14,6 +14,9 @@ signal sp2_dran
 var sp1
 var sp2
 
+func _input(event):
+	if event.is_action_pressed('new_round'):
+		next_player()
 
 signal updateborders #dammit bestimmter code nach dieser -r
 

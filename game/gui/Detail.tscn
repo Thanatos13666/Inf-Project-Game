@@ -64,17 +64,21 @@ func _on_Kaufen_pressed():
 	else:
 		playing = \"SP2\"
 	
-	cur_spieler = owner.owner.get_node(\"Spieler\").get_node(str(playing))
+	cur_spieler = owner.owner.get_node(\"Spieler\").get_node(str(playing)).get_node(\"CL/Control/GUI\")
 #	if cur_spieler.geld <= cur_showing.atribute[0][1]:
 #		return
-	var spawn =load(cur_showing.filename).instance()
-	spawn.position = owner.spawnpoint
-	spawn.connect(\"is_selected\",owner.unit_info,\"show_cur_unit\")
-	spawn.get_node(\"pre_unit/Rumpf\").texture = shop_link.get_node(\"HBoxContainer/VBoxContainer/rumpf\").texture 
-	spawn.get_node(\"pre_unit/Waffe/Waffe\").texture = shop_link.get_node(\"HBoxContainer/VBoxContainer/rumpf/gun\").texture 
-	spawn.gamenode = owner.owner
-	owner.owner.get_node(\"units_in_game\").get_node(playing).add_child(spawn)
-	pass # Replace with function body.
+	if cur_spieler.geld >= cur_showing.curr_values.Preis:
+		cur_spieler.geld -= cur_showing.curr_values.Preis
+		cur_spieler.sp_info.get_node(\"money/HBoxContainer/MarginContainer2/Label\").text = str(cur_spieler.geld)
+		var spawn =load(cur_showing.filename).instance()
+		spawn.position = owner.spawnpoint
+		spawn.connect(\"is_selected\",owner.unit_info,\"show_cur_unit\")
+		spawn.get_node(\"pre_unit/Rumpf\").texture = shop_link.get_node(\"HBoxContainer/VBoxContainer/rumpf\").texture 
+		spawn.get_node(\"pre_unit/Waffe/Waffe\").texture = shop_link.get_node(\"HBoxContainer/VBoxContainer/rumpf/gun\").texture 
+		spawn.gamenode = owner.owner
+		owner.owner.get_node(\"units_in_game\").get_node(playing).add_child(spawn)
+	else:
+		return
 
 
 
@@ -186,7 +190,6 @@ margin_right = 113.0
 rect_min_size = Vector2( 5, 0 )
 
 [node name="butons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 36.0
 margin_right = 113.0
 margin_bottom = 60.0
