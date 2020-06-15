@@ -1,0 +1,41 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://game/speichern_class.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+version = "0.5.0"
+data = {
+"global": {
+"Map": "beispiel_map",
+"cur_game": "null",
+"sp1Name": "awd",
+"sp2Name": "dawd"
+},
+NodePath("/root/Game"): true,
+NodePath("/root/Game/Spieler/SP1/CL/Control/GUI"): {
+"geld": 205,
+"pos": Vector2( 1392, 512 ),
+"zoom": Vector2( 1, 1 )
+},
+NodePath("/root/Game/Spieler/SP2/CL/Control/GUI"): {
+"geld": 315,
+"pos": Vector2( 5632, 5888 ),
+"zoom": Vector2( 1, 1 )
+},
+NodePath("/root/Game/units_in_game/SP1"): {
+0: {
+"Angriff": 5,
+"Ausweichen": 5,
+"Bewegungsrate": 600,
+"Leben": 15,
+"Reichweite": 500,
+"Typ": "tank",
+"button_attack": 0,
+"pos": Vector2( 0, 0 )
+}
+},
+NodePath("/root/Game/units_in_game/SP2"): {
+
+}
+}

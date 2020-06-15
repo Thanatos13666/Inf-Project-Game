@@ -1,39 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assetz/Fonts/pix-pixelfjverdana12pt/pix-pixel_48_preset.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assetz/gui/Button.png" type="Texture" id=2]
+[ext_resource path="res://assetz/Fonts/myskinnytype/main_menu.tres" type="DynamicFont" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends WindowDialog
 
 func _ready():
 	set_as_toplevel(false)
-	for button in $VBoxContainer.get_children():
-		if (button.get_index()==0): #skip label
-			continue
-		button.connect(\"pressed\",self,\"_on_Button_pressed\",[button.get_index()])
-
-func _on_Button_pressed(id):
-	
-	if(id==1):
-		speichern()
-	else:
-		#get last lime saved 
-		# if that < x 
-			#popup whant to save?
-			#if yes
-#				speichern()
-		if (id == 2):
-			get_tree().change_scene(\"res://Main_menu_group/Main_menu.tscn\")
-		else:
-			get_tree().quit()
-	
-func speichern():
-	speichern.save(global.file_name)
-	print(\"Save\")
-
-	pass
-	
-	
 	
 func _input(event):
 	if Input.is_action_just_pressed(\"ESC_menu\"):
@@ -42,9 +17,21 @@ func _input(event):
 			popup_centered()
 		else:
 			hide()
-		set_as_toplevel(false)"
+		set_as_toplevel(false)
+
+func _on_Save_pressed():
+	speichern.save(global.file_name)
+
+
+func _on_Main_pressed():
+	get_tree().change_scene(\"res://Main_menu_group/Main_menu.tscn\")
+
+
+func _on_Ende_pressed():
+	get_tree().quit()"
 
 [node name="WindowDialog" type="WindowDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 256.0
@@ -58,33 +45,152 @@ script = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer6" type="MarginContainer" parent="VBoxContainer"]
 margin_right = 767.0
-margin_bottom = 108.0
-custom_fonts/font = ExtResource( 1 )
-text = "PAUSE"
-align = 1
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Save" type="Button" parent="VBoxContainer"]
-margin_top = 112.0
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer6"]
 margin_right = 767.0
-margin_bottom = 227.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( -0.0847588, -0.000465393, 349.085, 139 )
+patch_margin_left = 24
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 22
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer6"]
+margin_right = 767.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+text = "Pausiert"
+align = 1
+valign = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 121.0
+margin_right = 767.0
+margin_bottom = 238.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Save" type="Button" parent="VBoxContainer/MarginContainer3"]
+margin_right = 767.0
+margin_bottom = 117.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Speichern"
 
-[node name="Main" type="Button" parent="VBoxContainer"]
-margin_top = 231.0
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer3"]
 margin_right = 767.0
-margin_bottom = 346.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( -0.0847588, -0.000465393, 349.085, 139 )
+patch_margin_left = 24
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 22
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer3"]
+margin_right = 767.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+text = "Speichern"
+align = 1
+valign = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 242.0
+margin_right = 767.0
+margin_bottom = 359.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Main" type="Button" parent="VBoxContainer/MarginContainer4"]
+margin_right = 767.0
+margin_bottom = 117.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Hauptmenü"
 
-[node name="Ende" type="Button" parent="VBoxContainer"]
-margin_top = 350.0
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer4"]
 margin_right = 767.0
-margin_bottom = 467.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( -0.0847588, -0.000465393, 349.085, 139 )
+patch_margin_left = 24
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 22
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer4"]
+margin_right = 767.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+text = "Hauptmenü"
+align = 1
+valign = 1
+
+[node name="MarginContainer5" type="MarginContainer" parent="VBoxContainer"]
+margin_top = 363.0
+margin_right = 767.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ende" type="Button" parent="VBoxContainer/MarginContainer5"]
+margin_right = 767.0
+margin_bottom = 119.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Spiel beenden"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer5"]
+margin_right = 767.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+region_rect = Rect2( -0.0847588, -0.000465393, 349.085, 139 )
+patch_margin_left = 24
+patch_margin_top = 25
+patch_margin_right = 24
+patch_margin_bottom = 22
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer5"]
+margin_right = 767.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 1, 0.592157, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 3
+text = "Spiel beenden"
+align = 1
+valign = 1
+[connection signal="pressed" from="VBoxContainer/MarginContainer3/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer4/Main" to="." method="_on_Main_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer5/Ende" to="." method="_on_Ende_pressed"]

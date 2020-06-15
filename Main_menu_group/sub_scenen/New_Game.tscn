@@ -80,9 +80,11 @@ anchor_bottom = 1.0
 script = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -109,11 +111,11 @@ clip_text = true
 [node name="Spielname" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 68.0
 margin_right = 1280.0
-margin_bottom = 132.0
+margin_bottom = 142.0
 
 [node name="Label" type="Label" parent="VBoxContainer/Spielname"]
 margin_right = 638.0
-margin_bottom = 64.0
+margin_bottom = 74.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
@@ -128,19 +130,19 @@ clip_text = true
 [node name="GameName" type="LineEdit" parent="VBoxContainer/Spielname"]
 margin_left = 642.0
 margin_right = 1280.0
-margin_bottom = 64.0
+margin_bottom = 74.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 136.0
+margin_top = 146.0
 margin_right = 1280.0
 margin_bottom = 542.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 margin_right = 638.0
-margin_bottom = 406.0
+margin_bottom = 396.0
 size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
@@ -167,7 +169,7 @@ custom_fonts/font = ExtResource( 2 )
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 642.0
 margin_right = 1280.0
-margin_bottom = 406.0
+margin_bottom = 396.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
